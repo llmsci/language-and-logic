@@ -1,6 +1,6 @@
 # Language and Logic
 
-- Sets: [sets.md](sets/sets.md) · [sets.ipynb](sets/sets.ipynb)
+- Sets: [sets.md](sets/sets.md) · [sets.ipynb](sets/sets.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/llmsci/language-and-logic/blob/main/sets/sets.ipynb)
 
 ## References
 
