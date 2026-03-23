@@ -8,12 +8,12 @@
 
 Python provides multiple collection types, including lists, tuples, dictionaries, and sets. Each of these serves a different purpose and has unique properties.
 
-| Type | Ordered | Duplicates | Mutable |
-|------|---------|------------|---------|
-| list | ✅ | ✅ | ✅ |
-| tuple | ✅ | ✅ | ❌ |
-| set | ❌ | ❌ | ✅ |
-| dict | ✅ (3.7+) | keys: ✗ | ✅ |
+| Type  | Ordered  | Duplicates | Mutable |
+| ----- | -------- | ---------- | ------- |
+| list  | ✅        | ✅          | ✅       |
+| tuple | ✅        | ✅          | ❌       |
+| set   | ❌        | ❌          | ✅       |
+| dict  | ✅ (3.7+) | keys: ✗    | ✅       |
 
 ### Basic Collections
 
@@ -233,11 +233,11 @@ The mathematical expression $A \cap B$ is represented in Python using either the
 
 The mathematical expression $A \setminus B$ or $A - B$ is represented in Python using either the `difference()` method or the `-` operator. This operation returns a set containing elements that are in $A$ but not in $B$.
 
-| Operation | Notation | Python operator | Python method | Result |
-|-----------|----------|-----------------|---------------|--------|
-| Union | $A \cup B$ | `a \| b` | `a.union(b)` | `{1, 2, 3, 4, 5}` |
-| Intersection | $A \cap B$ | `a & b` | `a.intersection(b)` | `{2, 3}` |
-| Difference | $A \setminus B$ | `a - b` | `a.difference(b)` | `{1}` |
+| Operation    | Notation        | Python operator | Python method       | Result            |
+| ------------ | --------------- | --------------- | ------------------- | ----------------- |
+| Union        | $A \cup B$      | `a \| b`        | `a.union(b)`        | `{1, 2, 3, 4, 5}` |
+| Intersection | $A \cap B$      | `a & b`         | `a.intersection(b)` | `{2, 3}`          |
+| Difference   | $A \setminus B$ | `a - b`         | `a.difference(b)`   | `{1}`             |
 
 ---
 
@@ -347,6 +347,7 @@ The set-builder notation $\{x : \varphi(x)\}$ is powerful, but **not every prope
 > **Theorem (Russell's Paradox):** There is no set $R = \{x : x \notin x\}$.
 
 **Proof:** Suppose $R$ exists. We can ask whether $R \in R$ or not.
+
 - If $R \in R$, then by definition of $R$, we must have $R \notin R$. — Contradiction!
 - If $R \notin R$, then by definition of $R$, we must have $R \in R$. — Contradiction!
 
@@ -382,14 +383,14 @@ In this world, there are two sets of beings: humans and mortals. The set of huma
 
 ### Verifying Propositions
 
-| Proposition | Mathematical expression | Python code | Result |
-|-------------|------------------------|-------------|--------|
-| Alice is human | $\text{alice} \in H$ | `'alice' in human` | `True` |
-| All humans are mortal | $H \subseteq M$ | `human <= mortal` | `True` |
-| Not all mortals are human | $M \not\subseteq H$ | `mortal <= human` | `False` |
-| Non-human mortals | $M \setminus H$ | `mortal - human` | `{'pooh', 'simba'}` |
-| Humans and mortals | $H \cap M$ | `human & mortal` | `{'alice', 'boole', 'cantor'}` |
-| Humans = mortal humans | $H = H \cap M$ | `human == human & mortal` | `True` |
+| Proposition               | Mathematical expression | Python code               | Result                         |
+| ------------------------- | ----------------------- | ------------------------- | ------------------------------ |
+| Alice is human            | $\text{alice} \in H$    | `'alice' in human`        | `True`                         |
+| All humans are mortal     | $H \subseteq M$         | `human <= mortal`         | `True`                         |
+| Not all mortals are human | $M \not\subseteq H$     | `mortal <= human`         | `False`                        |
+| Non-human mortals         | $M \setminus H$         | `mortal - human`          | `{'pooh', 'simba'}`            |
+| Humans and mortals        | $H \cap M$              | `human & mortal`          | `{'alice', 'boole', 'cantor'}` |
+| Humans = mortal humans    | $H = H \cap M$          | `human == human & mortal` | `True`                         |
 
 #### Alice is a human
 
@@ -486,26 +487,26 @@ back_vowels  = {'o', 'u'}
 
 ## Glossary
 
-| Term | Wikipedia |
-|------|-----------|
-| Set | [Set](https://en.wikipedia.org/wiki/Set_(mathematics)) |
-| Element / Member | [Element](https://en.wikipedia.org/wiki/Element_(mathematics)) |
-| Empty set | [Empty set](https://en.wikipedia.org/wiki/Empty_set) |
-| Extensionality | [Axiom of extensionality](https://en.wikipedia.org/wiki/Axiom_of_extensionality) |
-| Extensional notation | [Set-builder notation](https://en.wikipedia.org/wiki/Set-builder_notation) |
-| Intensional notation | [Set-builder notation](https://en.wikipedia.org/wiki/Set-builder_notation) |
-| Subset | [Subset](https://en.wikipedia.org/wiki/Subset) |
-| Proper subset | [Subset](https://en.wikipedia.org/wiki/Subset) |
-| Superset | [Subset](https://en.wikipedia.org/wiki/Subset) |
-| Power set | [Power set](https://en.wikipedia.org/wiki/Power_set) |
-| Union | [Union](https://en.wikipedia.org/wiki/Union_(set_theory)) |
-| Intersection | [Intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) |
-| Difference | [Complement](https://en.wikipedia.org/wiki/Complement_(set_theory)) |
-| Disjoint sets | [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) |
-| Ordered pair | [Ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) |
-| $n$-tuple | [Tuple](https://en.wikipedia.org/wiki/Tuple) |
-| Wiener–Kuratowski definition | [Ordered pair](https://en.wikipedia.org/wiki/Ordered_pair) |
-| Cartesian product | [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product) |
-| Russell's Paradox | [Russell's paradox](https://en.wikipedia.org/wiki/Russell%27s_paradox) |
-| ZFC (Zermelo–Fraenkel set theory) | [ZFC](https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory) |
-| Type Theory | [Type theory](https://en.wikipedia.org/wiki/Type_theory) |
+| Term                              | Wikipedia                                                                        |
+| --------------------------------- | -------------------------------------------------------------------------------- |
+| Set                               | [Set](https://en.wikipedia.org/wiki/Set_(mathematics))                           |
+| Element / Member                  | [Element](https://en.wikipedia.org/wiki/Element_(mathematics))                   |
+| Empty set                         | [Empty set](https://en.wikipedia.org/wiki/Empty_set)                             |
+| Extensionality                    | [Axiom of extensionality](https://en.wikipedia.org/wiki/Axiom_of_extensionality) |
+| Extensional notation              | [Set-builder notation](https://en.wikipedia.org/wiki/Set-builder_notation)       |
+| Intensional notation              | [Set-builder notation](https://en.wikipedia.org/wiki/Set-builder_notation)       |
+| Subset                            | [Subset](https://en.wikipedia.org/wiki/Subset)                                   |
+| Proper subset                     | [Subset](https://en.wikipedia.org/wiki/Subset)                                   |
+| Superset                          | [Subset](https://en.wikipedia.org/wiki/Subset)                                   |
+| Power set                         | [Power set](https://en.wikipedia.org/wiki/Power_set)                             |
+| Union                             | [Union](https://en.wikipedia.org/wiki/Union_(set_theory))                        |
+| Intersection                      | [Intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory))          |
+| Difference                        | [Complement](https://en.wikipedia.org/wiki/Complement_(set_theory))              |
+| Disjoint sets                     | [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets)                     |
+| Ordered pair                      | [Ordered pair](https://en.wikipedia.org/wiki/Ordered_pair)                       |
+| $n$-tuple                         | [Tuple](https://en.wikipedia.org/wiki/Tuple)                                     |
+| Wiener–Kuratowski definition      | [Ordered pair](https://en.wikipedia.org/wiki/Ordered_pair)                       |
+| Cartesian product                 | [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product)             |
+| Russell's Paradox                 | [Russell's paradox](https://en.wikipedia.org/wiki/Russell%27s_paradox)           |
+| ZFC (Zermelo–Fraenkel set theory) | [ZFC](https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory)         |
+| Type Theory                       | [Type theory](https://en.wikipedia.org/wiki/Type_theory)                         |
