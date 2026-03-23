@@ -1,0 +1,1971 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Language and Logic">
+      
+      
+      
+        <link rel="canonical" href="https://llmsci.github.io/language-and-logic/sets/sets/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Sets - Language and Logic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sets-logic-computation-python-as-a-playground" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Language and Logic" class="md-header__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Language and Logic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Language and Logic" class="md-nav__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Language and Logic
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-of-python-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview of Python Collections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Overview of Python Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Collections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dictionaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-1-what-is-a-set-extensionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-1. What is a Set? (Extensionality)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2-set-notation-and-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-2. Set Notation and Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-3-extensionality-and-python-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-3. Extensionality and Python Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2-3. Extensionality and Python Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-empty-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create an Empty Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unordered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unordered
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Set Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Set Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-1-membership-x-in-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-1. Membership — \(x \in A\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-size-of-a-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-2. Size of a Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3-subsets-and-supersets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-3. Subsets and Supersets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3-3. Subsets and Supersets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subset-a-subseteq-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subset \(A \subseteq B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#superset-a-supseteq-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Superset \(A \supseteq B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proper-subset-a-subsetneq-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proper Subset \(A \subsetneq B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4-union-intersection-and-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-4. Union, Intersection, and Difference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-power-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Power Sets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tuples-and-ordered-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tuples and Ordered Pairs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Tuples and Ordered Pairs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-1-ordered-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-1. Ordered Pairs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-2-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-2. Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-3-cartesian-product-a-times-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-3. Cartesian Product — \(A \times B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-russells-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Russell's Paradox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-example-logic-and-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Example: Logic and Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Example: Logic and Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A World
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-propositions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying Propositions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying Propositions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alice-is-a-human" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alice is a human
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-humans-are-mortal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All humans are mortal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-all-mortals-are-human" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not all mortals are human
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-human-mortals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-human mortals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#humans-and-mortality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Humans and Mortality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-of-python-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview of Python Collections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Overview of Python Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Collections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dictionaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-1-what-is-a-set-extensionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-1. What is a Set? (Extensionality)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2-set-notation-and-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-2. Set Notation and Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-3-extensionality-and-python-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-3. Extensionality and Python Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2-3. Extensionality and Python Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-empty-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create an Empty Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unordered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unordered
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Set Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Set Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-1-membership-x-in-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-1. Membership — \(x \in A\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-size-of-a-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-2. Size of a Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3-subsets-and-supersets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-3. Subsets and Supersets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3-3. Subsets and Supersets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subset-a-subseteq-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subset \(A \subseteq B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#superset-a-supseteq-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Superset \(A \supseteq B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proper-subset-a-subsetneq-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proper Subset \(A \subsetneq B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4-union-intersection-and-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-4. Union, Intersection, and Difference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-power-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Power Sets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tuples-and-ordered-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tuples and Ordered Pairs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Tuples and Ordered Pairs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-1-ordered-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-1. Ordered Pairs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-2-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-2. Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-3-cartesian-product-a-times-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-3. Cartesian Product — \(A \times B\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-russells-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Russell's Paradox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-example-logic-and-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Example: Logic and Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Example: Logic and Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A World
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-propositions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying Propositions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying Propositions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alice-is-a-human" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alice is a human
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-humans-are-mortal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All humans are mortal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-all-mortals-are-human" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not all mortals are human
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-human-mortals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-human mortals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#humans-and-mortality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Humans and Mortality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="sets-logic-computation-python-as-a-playground">Sets, Logic, Computation: Python as a Playground</h1>
+<blockquote>
+<p>Reference: <em>Sets, Logic, Computation: An Open Introduction to Metalogic</em> (Richard Zach, Open Logic Project)</p>
+</blockquote>
+<hr />
+<h2 id="1-overview-of-python-collections">1. Overview of Python Collections</h2>
+<p>Python provides multiple collection types, including lists, tuples, dictionaries, and sets. Each of these serves a different purpose and has unique properties.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Ordered</th>
+<th>Duplicates</th>
+<th>Mutable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>tuple</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>set</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>dict</td>
+<td>✅ (3.7+)</td>
+<td>keys: ✗</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="basic-collections">Basic Collections</h3>
+<h4 id="list">List</h4>
+<p>A list is the most basic collection data type in Python. It is a <strong>mutable</strong>, <strong>ordered</strong> sequence, meaning that elements can be added, removed, or modified after the list is created.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div>
+<h4 id="tuples">Tuples</h4>
+<p>A tuple is similar to a list but has a key distinction: it is <strong>immutable</strong>, meaning that once created, its elements cannot be changed. Tuples are useful when you need a fixed collection of elements that should not be altered.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">mytuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="sets">Sets</h4>
+<p>A set is an <strong>unordered</strong> collection of unique elements. Unlike lists and tuples, sets do not allow duplicate values and do not maintain a specific order.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">myset</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</code></pre></div>
+<p>Python also offers frozensets. A frozenset is similar to a set but is immutable.</p>
+<h4 id="dictionaries">Dictionaries</h4>
+<p>A dictionary is a collection of key-value pairs. Each key is unique, and it maps to a specific value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alice&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;carol&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="built-in-functions">Built-in Functions</h3>
+<p>Python provides built-in functions for collections. Two fundamental functions among them are <code>type()</code> and <code>len()</code>. The <code>type()</code> function returns the type of the specific object. The <code>len()</code> function returns the number of items in an object.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">type</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>   <span class="c1"># &lt;class &#39;list&#39;&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">len</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>    <span class="c1"># 3</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">myset</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">type</span><span class="p">(</span><span class="n">myset</span><span class="p">)</span>    <span class="c1"># &lt;class &#39;set&#39;&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">len</span><span class="p">(</span><span class="n">myset</span><span class="p">)</span>     <span class="c1"># 5</span>
+</code></pre></div>
+<hr />
+<h2 id="2-sets">2. Sets</h2>
+<h3 id="2-1-what-is-a-set-extensionality">2-1. What is a Set? (Extensionality)</h3>
+<p>A set is a <strong>collection of objects</strong>, considered as a single object. The objects making up the set are called <strong>elements</strong> or <strong>members</strong> of the set.</p>
+<ul>
+<li>If <span class="arithmatex">\(x\)</span> is an element of set <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\(x \in A\)</span></li>
+<li>If <span class="arithmatex">\(x\)</span> is not an element of set <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\(x \notin A\)</span></li>
+<li>A set with no elements is called the <strong>empty set</strong>, denoted <span class="arithmatex">\(\emptyset\)</span>.</li>
+</ul>
+<blockquote>
+<p><strong>Definition (Extensionality):</strong> If <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> are sets, then <span class="arithmatex">\(A = B\)</span> if and only if every element of <span class="arithmatex">\(A\)</span> is also an element of <span class="arithmatex">\(B\)</span>, and vice versa.</p>
+</blockquote>
+<p>The key point of extensionality is that the identity of a set is determined <strong>solely by its elements</strong>. The order in which elements are listed, or how many times they appear, is irrelevant.</p>
+<div class="arithmatex">\[\{a, a, b\} = \{a, b\} = \{b, a\}\]</div>
+<p>To prove that two sets are equal: show that whenever <span class="arithmatex">\(x \in A\)</span> then <span class="arithmatex">\(x \in B\)</span>, and whenever <span class="arithmatex">\(y \in B\)</span> then <span class="arithmatex">\(y \in A\)</span>.</p>
+<h3 id="2-2-set-notation-and-python">2-2. Set Notation and Python</h3>
+<p>There are two ways to specify a set, each corresponding to a Python construct.</p>
+<ul>
+<li><strong>Extensional notation (roster notation):</strong> List elements explicitly, e.g., <span class="arithmatex">\(\{1, 2, 3\}\)</span> → corresponds to a Python set literal <code>{1, 2, 3}</code></li>
+<li><strong>Intensional notation (set-builder notation):</strong> Define by a property, e.g., <span class="arithmatex">\(\{x : \varphi(x)\}\)</span>, read as "the set of all <span class="arithmatex">\(x\)</span> such that <span class="arithmatex">\(\varphi(x)\)</span>" → corresponds to a Python <strong>set comprehension</strong> <code>{x for x in ... if ...}</code></li>
+</ul>
+<p>Example: <span class="arithmatex">\(\{x : x \leq 100 \land x \text{ is even}\} = \{2, 4, 6, \ldots, 100\}\)</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Extensional notation</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Intensional notation</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">{</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>   <span class="c1"># → {2, 4, 6, ..., 100}</span>
+</code></pre></div>
+<p>Note that while mathematical set-builder notation does not require specifying a universe, Python comprehensions always require an iterable to loop over (<code>range(1, 101)</code>). In Python, it is not possible to iterate over "all <span class="arithmatex">\(x\)</span>" without a prior collection to draw from.</p>
+<h3 id="2-3-extensionality-and-python-sets">2-3. Extensionality and Python Sets</h3>
+<p>Now let's delve into the details of sets in Python. A set is an unordered collection of unique elements, meaning it does not allow duplicate values.</p>
+<h4 id="create-a-set">Create a Set</h4>
+<p>To create a set in Python, you can use either curly braces <code>{}</code> or the built-in <code>set()</code> constructor.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<p>By extensionality, duplicate elements are automatically removed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>      <span class="c1"># → {1, 2, 3}</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span> <span class="c1"># → {&#39;a&#39;, &#39;b&#39;, &#39;c&#39;}</span>
+</code></pre></div>
+<h4 id="create-an-empty-set">Create an Empty Set</h4>
+<p>To create an empty set in Python, you must use the <code>set()</code> function. Using empty curly braces <code>{}</code> creates an empty dictionary, not an empty set.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">empty_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">type</span><span class="p">(</span><span class="n">empty_set</span><span class="p">)</span>   <span class="c1"># &lt;class &#39;set&#39;&gt;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">len</span><span class="p">(</span><span class="n">empty_set</span><span class="p">)</span>    <span class="c1"># 0</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">e</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>           <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
+</code></pre></div>
+<h4 id="unordered">Unordered</h4>
+<p>In Python, sets are unordered collections, meaning their elements do not have a defined or predictable order. Sets do not maintain the order of elements as they are inserted.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>   <span class="c1"># output order may vary each time</span>
+</code></pre></div>
+<hr />
+<h2 id="3-set-operations">3. Set Operations</h2>
+<h3 id="3-1-membership-x-in-a">3-1. Membership — <span class="arithmatex">\(x \in A\)</span></h3>
+<p>The mathematical expression <span class="arithmatex">\(x \in A\)</span> corresponds to membership testing in Python using the <code>in</code> operator. It checks whether the element <span class="arithmatex">\(x\)</span> is part of the collection <span class="arithmatex">\(A\)</span>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="mi">1</span> <span class="ow">in</span> <span class="n">a</span>   <span class="c1"># True</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="mi">4</span> <span class="ow">in</span> <span class="n">a</span>   <span class="c1"># False</span>
+</code></pre></div>
+<h3 id="3-2-size-of-a-set">3-2. Size of a Set</h3>
+<p>To get the size of a set in Python, you can use the built-in <code>len()</code> function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>   <span class="c1"># 3</span>
+</code></pre></div>
+<h3 id="3-3-subsets-and-supersets">3-3. Subsets and Supersets</h3>
+<blockquote>
+<p><strong>Definition (Subset):</strong> If every element of a set <span class="arithmatex">\(A\)</span> is also an element of <span class="arithmatex">\(B\)</span>, then <span class="arithmatex">\(A\)</span> is a <strong>subset</strong> of <span class="arithmatex">\(B\)</span>, written <span class="arithmatex">\(A \subseteq B\)</span>. If <span class="arithmatex">\(A \subseteq B\)</span> but <span class="arithmatex">\(A \neq B\)</span>, we write <span class="arithmatex">\(A \subsetneq B\)</span> and say <span class="arithmatex">\(A\)</span> is a <strong>proper subset</strong> of <span class="arithmatex">\(B\)</span>.</p>
+</blockquote>
+<p>Combining extensionality with the definition of subset gives us the following proposition.</p>
+<blockquote>
+<p><strong>Proposition:</strong> <span class="arithmatex">\(A = B\)</span> if and only if both <span class="arithmatex">\(A \subseteq B\)</span> and <span class="arithmatex">\(B \subseteq A\)</span>.</p>
+</blockquote>
+<h4 id="subset-a-subseteq-b">Subset <span class="arithmatex">\(A \subseteq B\)</span></h4>
+<p>The mathematical expression <span class="arithmatex">\(A \subseteq B\)</span> corresponds to subset testing in Python. You can test if one set is a subset of another using the <code>issubset()</code> method or the <code>&lt;=</code> operator. It checks whether all elements of <span class="arithmatex">\(A\)</span> are also elements of <span class="arithmatex">\(B\)</span>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">c</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">a</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>   <span class="c1"># True</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span>          <span class="c1"># True</span>
+</code></pre></div>
+<h4 id="superset-a-supseteq-b">Superset <span class="arithmatex">\(A \supseteq B\)</span></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">a</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>   <span class="c1"># True</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span>            <span class="c1"># True</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">a</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>   <span class="c1"># False</span>
+</code></pre></div>
+<h4 id="proper-subset-a-subsetneq-b">Proper Subset <span class="arithmatex">\(A \subsetneq B\)</span></h4>
+<p>The mathematical expression <span class="arithmatex">\(A \subset B\)</span> corresponds to checking in Python whether all elements of <span class="arithmatex">\(A\)</span> are in <span class="arithmatex">\(B\)</span> and the sets are not equal. This can be done using the <code>issubset()</code> method combined with a comparison or the <code>&lt;</code> operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>                         <span class="c1"># False (since a == b)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">a</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span>      <span class="c1"># False</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">a</span> <span class="o">&lt;</span> <span class="n">c</span>                         <span class="c1"># True</span>
+</code></pre></div>
+<h3 id="3-4-union-intersection-and-difference">3-4. Union, Intersection, and Difference</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Definition (Union):</strong> <span class="arithmatex">\(A \cup B\)</span> is the set of all things which are elements of <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, or both.
+$<span class="arithmatex">\(A \cup B = \{x : x \in A \lor x \in B\}\)</span>$</p>
+</blockquote>
+<p>The mathematical expression <span class="arithmatex">\(A \cup B\)</span> is represented in Python using either the <code>union()</code> method or the <code>|</code> operator. This operation combines all unique elements from both sets.</p>
+<blockquote>
+<p><strong>Definition (Intersection):</strong> <span class="arithmatex">\(A \cap B\)</span> is the set of all things which are elements of <strong>both</strong> <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>.
+$<span class="arithmatex">\(A \cap B = \{x : x \in A \land x \in B\}\)</span>$
+Two sets are called <strong>disjoint</strong> if their intersection is empty.</p>
+</blockquote>
+<p>The mathematical expression <span class="arithmatex">\(A \cap B\)</span> is represented in Python using either the <code>intersection()</code> method or the <code>&amp;</code> operator. This operation returns a set containing elements that are common to both sets.</p>
+<blockquote>
+<p><strong>Definition (Difference):</strong> <span class="arithmatex">\(A \setminus B\)</span> is the set of all elements of <span class="arithmatex">\(A\)</span> which are not also elements of <span class="arithmatex">\(B\)</span>.
+$<span class="arithmatex">\(A \setminus B = \{x : x \in A \land x \notin B\}\)</span>$</p>
+</blockquote>
+<p>The mathematical expression <span class="arithmatex">\(A \setminus B\)</span> or <span class="arithmatex">\(A - B\)</span> is represented in Python using either the <code>difference()</code> method or the <code>-</code> operator. This operation returns a set containing elements that are in <span class="arithmatex">\(A\)</span> but not in <span class="arithmatex">\(B\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Notation</th>
+<th>Python operator</th>
+<th>Python method</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Union</td>
+<td><span class="arithmatex">\(A \cup B\)</span></td>
+<td><code>a \| b</code></td>
+<td><code>a.union(b)</code></td>
+<td><code>{1, 2, 3, 4, 5}</code></td>
+</tr>
+<tr>
+<td>Intersection</td>
+<td><span class="arithmatex">\(A \cap B\)</span></td>
+<td><code>a &amp; b</code></td>
+<td><code>a.intersection(b)</code></td>
+<td><code>{2, 3}</code></td>
+</tr>
+<tr>
+<td>Difference</td>
+<td><span class="arithmatex">\(A \setminus B\)</span></td>
+<td><code>a - b</code></td>
+<td><code>a.difference(b)</code></td>
+<td><code>{1}</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-power-sets">4. Power Sets</h2>
+<blockquote>
+<p><strong>Definition (Power Set):</strong> The set consisting of all subsets of a set <span class="arithmatex">\(A\)</span> is called the <strong>power set</strong> of <span class="arithmatex">\(A\)</span>, written <span class="arithmatex">\(\wp(A)\)</span>.
+$<span class="arithmatex">\(\wp(A) = \{B : B \subseteq A\}\)</span>$</p>
+</blockquote>
+<p>Example: <span class="arithmatex">\(\wp(\{a, b, c\}) = \{\emptyset,\ \{a\},\ \{b\},\ \{c\},\ \{a,b\},\ \{a,c\},\ \{b,c\},\ \{a,b,c\}\}\)</span></p>
+<p>A set with <span class="arithmatex">\(n\)</span> elements has a power set with <span class="arithmatex">\(2^n\)</span> elements.</p>
+<p>There is no built-in function in Python to generate a power set directly, but you can create one using the following custom implementation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">power_set</span><span class="p">(</span><span class="n">input_set</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">input_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">input_set</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">()]</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">input_set</span><span class="p">:</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="n">new_subsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">subset</span> <span class="o">|</span> <span class="p">{</span><span class="n">item</span><span class="p">}</span> <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_subsets</span><span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">return</span> <span class="n">result</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="c1"># Example usage</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">power_set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1"># [set(), {1}, {2}, {1, 2}, {3}, {1, 3}, {2, 3}, {1, 2, 3}]</span>
+</code></pre></div>
+<blockquote>
+<p>💡 In Python, it is impossible for a set to have other sets as elements. The most straightforward way to represent a power set is to use a list of sets.</p>
+</blockquote>
+<hr />
+<h2 id="5-tuples-and-ordered-pairs">5. Tuples and Ordered Pairs</h2>
+<h3 id="5-1-ordered-pairs">5-1. Ordered Pairs</h3>
+<p>It follows from extensionality that sets have no order to their elements. When order matters, we use <strong>ordered pairs</strong> <span class="arithmatex">\(\langle x, y \rangle\)</span>.</p>
+<p>The key property of ordered pairs:</p>
+<div class="arithmatex">\[\langle a, b \rangle = \langle c, d \rangle \iff a = c \text{ and } b = d\]</div>
+<p>Therefore, if <span class="arithmatex">\(x \neq y\)</span> then <span class="arithmatex">\(\langle x, y \rangle \neq \langle y, x \rangle\)</span>. This contrasts with sets, where <span class="arithmatex">\(\{x, y\} = \{y, x\}\)</span>.</p>
+<blockquote>
+<p><strong>Note (Wiener–Kuratowski definition):</strong> In pure set theory, ordered pairs are defined as: <span class="arithmatex">\(\langle a, b \rangle = \{\{a\}, \{a, b\}\}\)</span></p>
+</blockquote>
+<p>Ordered pairs and tuples in Python are closely related concepts used to represent collections of items in a specific order. An ordered pair is a set of two elements where the order matters. They are defined using parentheses.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>Tuples are ordered sequences that can contain any number of elements, including ordered pairs. In Python, there is no specific "ordered pair" data type. Instead, Python uses tuples to represent ordered collections of elements, including pairs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="5-2-comparison">5-2. Comparison</h3>
+<p>Two tuples are equal when they have the same length and all corresponding elements are equal.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># True</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># False  ← order matters!</span>
+</code></pre></div>
+<h3 id="5-3-cartesian-product-a-times-b">5-3. Cartesian Product — <span class="arithmatex">\(A \times B\)</span></h3>
+<blockquote>
+<p><strong>Definition (Cartesian Product):</strong> Given sets <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, their Cartesian product <span class="arithmatex">\(A \times B\)</span> is defined by
+$<span class="arithmatex">\(A \times B = \{\langle x, y \rangle : x \in A \text{ and } y \in B\}\)</span>$</p>
+<p><strong>Proposition:</strong> If <span class="arithmatex">\(A\)</span> has <span class="arithmatex">\(n\)</span> elements and <span class="arithmatex">\(B\)</span> has <span class="arithmatex">\(m\)</span> elements, then <span class="arithmatex">\(A \times B\)</span> has <span class="arithmatex">\(n \cdot m\)</span> elements.</p>
+</blockquote>
+<p>The product <span class="arithmatex">\(A \times A\)</span> is written <span class="arithmatex">\(A^2\)</span>. More generally, the set of <span class="arithmatex">\(n\)</span>-tuples from <span class="arithmatex">\(A\)</span> is written <span class="arithmatex">\(A^n\)</span>.</p>
+<p>In Python, the Cartesian product of multiple sets or lists can be easily computed using the <code>itertools.product()</code> function from the <code>itertools</code> module.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># [(&#39;a&#39;, 1), (&#39;a&#39;, 2), (&#39;b&#39;, 1), (&#39;b&#39;, 2)]</span>
+</code></pre></div>
+<p>For example, we can create a Cartesian product of nouns and verbs. Each tuple in the result represents a combination of a noun and a verb. This Cartesian product gives us all possible pairings of nouns and verbs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">nouns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;boole&#39;</span><span class="p">,</span> <span class="s1">&#39;cantor&#39;</span><span class="p">}</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">verbs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;runs&#39;</span><span class="p">,</span> <span class="s1">&#39;jumps&#39;</span><span class="p">,</span> <span class="s1">&#39;sleeps&#39;</span><span class="p">}</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">nouns</span><span class="p">,</span> <span class="n">verbs</span><span class="p">))</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># generates all 9 (noun, verb) combinations</span>
+</code></pre></div>
+<hr />
+<h2 id="6-russells-paradox">6. Russell's Paradox</h2>
+<p>The set-builder notation <span class="arithmatex">\(\{x : \varphi(x)\}\)</span> is powerful, but <strong>not every property defines a set</strong>. The most famous example of this is Russell's Paradox.</p>
+<blockquote>
+<p><strong>Theorem (Russell's Paradox):</strong> There is no set <span class="arithmatex">\(R = \{x : x \notin x\}\)</span>.</p>
+</blockquote>
+<p><strong>Proof:</strong> Suppose <span class="arithmatex">\(R\)</span> exists. We can ask whether <span class="arithmatex">\(R \in R\)</span> or not.</p>
+<ul>
+<li>If <span class="arithmatex">\(R \in R\)</span>, then by definition of <span class="arithmatex">\(R\)</span>, we must have <span class="arithmatex">\(R \notin R\)</span>. — Contradiction!</li>
+<li>If <span class="arithmatex">\(R \notin R\)</span>, then by definition of <span class="arithmatex">\(R\)</span>, we must have <span class="arithmatex">\(R \in R\)</span>. — Contradiction!</li>
+</ul>
+<p>Therefore <span class="arithmatex">\(R\)</span> cannot exist. <span class="arithmatex">\(\square\)</span></p>
+<p>This paradox shows that set theory cannot be based on the naive principle that any property defines a set. Modern mathematics avoids this by adopting axiomatic systems such as ZFC (Zermelo–Fraenkel set theory), which precisely regulates the conditions under which sets exist.</p>
+<p>In Python, sets cannot contain other sets — this is simply not allowed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>   <span class="c1"># TypeError: unhashable type: &#39;set&#39;</span>
+</code></pre></div>
+<p>While not directly related, Russell himself proposed <strong>Type Theory</strong> as one solution to this paradox. By classifying objects into hierarchical types, it logically prevents a set from containing itself as an element. Together with ZFC, Type Theory has had a lasting influence on modern mathematics and programming language design.</p>
+<hr />
+<h2 id="7-example-logic-and-sets">7. Example: Logic and Sets</h2>
+<h3 id="a-world">A World</h3>
+<p>Here is a world:</p>
+<div class="arithmatex">\[H = \{\text{alice}, \text{boole}, \text{cantor}\}, \quad M = \{\text{alice}, \text{boole}, \text{cantor}, \text{pooh}, \text{simba}\}\]</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">human</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;boole&#39;</span><span class="p">,</span> <span class="s1">&#39;cantor&#39;</span><span class="p">}</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">mortal</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;boole&#39;</span><span class="p">,</span> <span class="s1">&#39;cantor&#39;</span><span class="p">,</span> <span class="s1">&#39;pooh&#39;</span><span class="p">,</span> <span class="s1">&#39;simba&#39;</span><span class="p">}</span>
+</code></pre></div>
+<p>In this world, there are two sets of beings: humans and mortals. The set of humans includes 'alice', 'boole', and 'cantor', representing the individuals who are defined as human. However, the set of mortals is larger, encompassing not only the humans but also 'pooh' and 'simba', who are mortal but not human.</p>
+<h3 id="verifying-propositions">Verifying Propositions</h3>
+<table>
+<thead>
+<tr>
+<th>Proposition</th>
+<th>Mathematical expression</th>
+<th>Python code</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice is human</td>
+<td><span class="arithmatex">\(\text{alice} \in H\)</span></td>
+<td><code>'alice' in human</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>All humans are mortal</td>
+<td><span class="arithmatex">\(H \subseteq M\)</span></td>
+<td><code>human &lt;= mortal</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>Not all mortals are human</td>
+<td><span class="arithmatex">\(M \not\subseteq H\)</span></td>
+<td><code>mortal &lt;= human</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>Non-human mortals</td>
+<td><span class="arithmatex">\(M \setminus H\)</span></td>
+<td><code>mortal - human</code></td>
+<td><code>{'pooh', 'simba'}</code></td>
+</tr>
+<tr>
+<td>Humans and mortals</td>
+<td><span class="arithmatex">\(H \cap M\)</span></td>
+<td><code>human &amp; mortal</code></td>
+<td><code>{'alice', 'boole', 'cantor'}</code></td>
+</tr>
+<tr>
+<td>Humans = mortal humans</td>
+<td><span class="arithmatex">\(H = H \cap M\)</span></td>
+<td><code>human == human &amp; mortal</code></td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="alice-is-a-human">Alice is a human</h4>
+<p>To check if 'alice' is a human in our defined world, we can use the <code>in</code> operator to test for membership in the human set.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="s1">&#39;alice&#39;</span> <span class="ow">in</span> <span class="n">human</span>   <span class="c1"># True</span>
+</code></pre></div>
+<h4 id="all-humans-are-mortal">All humans are mortal</h4>
+<p>Since every element in the <code>human</code> set is also in the <code>mortal</code> set (<span class="arithmatex">\(H \subseteq M\)</span>), it is true that all humans are mortal.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">human</span> <span class="o">&lt;=</span> <span class="n">mortal</span>   <span class="c1"># True</span>
+</code></pre></div>
+<h4 id="not-all-mortals-are-human">Not all mortals are human</h4>
+<p>The elements 'pooh' and 'simba' exist in the <code>mortal</code> set but not in the <code>human</code> set. This shows that while all humans are mortal, not all mortals are human.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">mortal</span> <span class="o">&lt;=</span> <span class="n">human</span>   <span class="c1"># False</span>
+</code></pre></div>
+<h4 id="non-human-mortals">Non-human mortals</h4>
+<p>The difference between the <code>mortal</code> set and the <code>human</code> set gives us the non-human mortals:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">mortal</span> <span class="o">-</span> <span class="n">human</span>   <span class="c1"># {&#39;pooh&#39;, &#39;simba&#39;}</span>
+</code></pre></div>
+<h4 id="humans-and-mortality">Humans and Mortality</h4>
+<p>The intersection of the two sets confirms that all humans are indeed mortal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">human</span> <span class="o">&amp;</span> <span class="n">mortal</span>   <span class="c1"># {&#39;alice&#39;, &#39;boole&#39;, &#39;cantor&#39;}</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">human</span> <span class="o">==</span> <span class="n">human</span> <span class="o">&amp;</span> <span class="n">mortal</span>   <span class="c1"># True</span>
+</code></pre></div>
+<hr />
+<h2 id="exercises">Exercises</h2>
+<h3 id="exercise-1">Exercise 1</h3>
+<p>Given the following sets, verify each statement, express it using set notation, and confirm with Python code.</p>
+<div class="arithmatex">\[P = \{\text{alice}, \text{bob}, \text{carol}, \text{pooh}\}, \quad S = \{\text{alice}, \text{bob}\}\]</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">person</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="s1">&#39;carol&#39;</span><span class="p">,</span> <span class="s1">&#39;pooh&#39;</span><span class="p">}</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">student</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">}</span>
+</code></pre></div>
+<p>(1) pooh is a student.</p>
+<p>(2) All students are persons.</p>
+<p>(3) All persons are students.</p>
+<p>(4) Find the persons who are not students.</p>
+<p>(5) Find the number of persons who are not students.</p>
+<hr />
+<h3 id="exercise-2">Exercise 2</h3>
+<p>Given the following sets, verify each statement, express it using set notation, and confirm with Python code.</p>
+<div class="arithmatex">\[V = \{a, e, i, o, u\}, \quad F = \{a, e, i\}, \quad B = \{o, u\}\]</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">vowels</span>       <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">}</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">front_vowels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">}</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">back_vowels</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">}</span>
+</code></pre></div>
+<p>(1) All front vowels are vowels.</p>
+<p>(2) Not all vowels are front vowels.</p>
+<p>(3) There is no vowel that is both a front vowel and a back vowel.</p>
+<p>(4) Find the vowels that are not front vowels.</p>
+<p>(5) The union of front vowels and back vowels equals the set of all vowels.</p>
+<hr />
+<h2 id="glossary">Glossary</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Wikipedia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set</td>
+<td><a href="https://en.wikipedia.org/wiki/Set_(mathematics)">Set</a></td>
+</tr>
+<tr>
+<td>Element / Member</td>
+<td><a href="https://en.wikipedia.org/wiki/Element_(mathematics)">Element</a></td>
+</tr>
+<tr>
+<td>Empty set</td>
+<td><a href="https://en.wikipedia.org/wiki/Empty_set">Empty set</a></td>
+</tr>
+<tr>
+<td>Extensionality</td>
+<td><a href="https://en.wikipedia.org/wiki/Axiom_of_extensionality">Axiom of extensionality</a></td>
+</tr>
+<tr>
+<td>Extensional notation</td>
+<td><a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a></td>
+</tr>
+<tr>
+<td>Intensional notation</td>
+<td><a href="https://en.wikipedia.org/wiki/Set-builder_notation">Set-builder notation</a></td>
+</tr>
+<tr>
+<td>Subset</td>
+<td><a href="https://en.wikipedia.org/wiki/Subset">Subset</a></td>
+</tr>
+<tr>
+<td>Proper subset</td>
+<td><a href="https://en.wikipedia.org/wiki/Subset">Subset</a></td>
+</tr>
+<tr>
+<td>Superset</td>
+<td><a href="https://en.wikipedia.org/wiki/Subset">Subset</a></td>
+</tr>
+<tr>
+<td>Power set</td>
+<td><a href="https://en.wikipedia.org/wiki/Power_set">Power set</a></td>
+</tr>
+<tr>
+<td>Union</td>
+<td><a href="https://en.wikipedia.org/wiki/Union_(set_theory)">Union</a></td>
+</tr>
+<tr>
+<td>Intersection</td>
+<td><a href="https://en.wikipedia.org/wiki/Intersection_(set_theory)">Intersection</a></td>
+</tr>
+<tr>
+<td>Difference</td>
+<td><a href="https://en.wikipedia.org/wiki/Complement_(set_theory)">Complement</a></td>
+</tr>
+<tr>
+<td>Disjoint sets</td>
+<td><a href="https://en.wikipedia.org/wiki/Disjoint_sets">Disjoint sets</a></td>
+</tr>
+<tr>
+<td>Ordered pair</td>
+<td><a href="https://en.wikipedia.org/wiki/Ordered_pair">Ordered pair</a></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n\)</span>-tuple</td>
+<td><a href="https://en.wikipedia.org/wiki/Tuple">Tuple</a></td>
+</tr>
+<tr>
+<td>Wiener–Kuratowski definition</td>
+<td><a href="https://en.wikipedia.org/wiki/Ordered_pair">Ordered pair</a></td>
+</tr>
+<tr>
+<td>Cartesian product</td>
+<td><a href="https://en.wikipedia.org/wiki/Cartesian_product">Cartesian product</a></td>
+</tr>
+<tr>
+<td>Russell's Paradox</td>
+<td><a href="https://en.wikipedia.org/wiki/Russell%27s_paradox">Russell's paradox</a></td>
+</tr>
+<tr>
+<td>ZFC (Zermelo–Fraenkel set theory)</td>
+<td><a href="https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory">ZFC</a></td>
+</tr>
+<tr>
+<td>Type Theory</td>
+<td><a href="https://en.wikipedia.org/wiki/Type_theory">Type theory</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
