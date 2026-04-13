@@ -1,9 +1,5 @@
 # Boolean Algebra
 
-> Reference: *Sets, Logic, Computation: An Open Introduction to Metalogic* (Richard Zach, Open Logic Project)
-
----
-
 ## 1. Boolean Operation
 
 ### 1-1. Boolean Values
@@ -27,36 +23,145 @@ Python has three logical operators: `not`, `and`, and `or`. These operators are 
 
 #### Negation
 
-$$\neg A$$
+The negation $\neg p$ inverts the truth value of $p$: it is true when $p$ is false, and false when $p$ is true.
+
+| $p$   | $\neg p$ |
+| ----- | -------- |
+| True  | False    |
+| False | True     |
+
+In Python, negation is expressed with `not`:
 
 ```python
 not True    # False
 not False   # True
 ```
 
-Double negation:
+Applying negation twice returns the original value:
 
-$$\neg \neg A = \neg (\neg A)$$
+$$\neg \neg p \equiv \neg (\neg p) \equiv p$$
 
 ```python
 not not True    # True
 not (not True)  # True
 ```
 
-#### Conjunction and Disjunction
+#### Conjunction
+
+The conjunction $p \wedge q$ is true if and only if both $p$ and $q$ are true.
+
+| $p$   | $q$   | $p \wedge q$ |
+| ----- | ----- | ------------ |
+| True  | True  | True         |
+| True  | False | False        |
+| False | True  | False        |
+| False | False | False        |
+
+In Python, conjunction is expressed with `and`:
 
 ```python
-True and False   # False
-True or False    # True
-
-(True and False) or (False and (not True))   # False
+True  and True    # True
+True  and False   # False
+False and True    # False
+False and False   # False
 ```
 
-### 1-3. Variables
+#### Disjunction
 
-You can use variables to represent Boolean values and perform operations on them.
+The disjunction $p \vee q$ is true if at least one of $p$ or $q$ is true.
 
-$$( p \vee q) \wedge \neg r$$
+| $p$   | $q$   | $p \vee q$ |
+| ----- | ----- | ---------- |
+| True  | True  | True       |
+| True  | False | True       |
+| False | True  | True       |
+| False | False | False      |
+
+In Python, disjunction is expressed with `or`:
+
+```python
+True  or True    # True
+True  or False   # True
+False or True    # True
+False or False   # False
+```
+
+### 1-3. Operator Precedence and Parentheses
+
+When multiple logical operators appear in a single expression, the order in which they are evaluated matters. Python follows a fixed precedence (priority) order:
+
+| Precedence | Operator | Notation     |
+| ---------- | -------- | ------------ |
+| 1 (highest) | `not`   | $\neg$       |
+| 2          | `and`    | $\wedge$     |
+| 3 (lowest) | `or`     | $\vee$       |
+
+This means `not` binds tightest, then `and`, then `or`. For example:
+
+```python
+not True or False     # False
+# evaluated as: (not True) or False
+```
+
+```python
+True or False and False   # True
+# evaluated as: True or (False and False)
+```
+
+Use parentheses to override the default precedence. The two expressions below look similar but have different truth values:
+
+$$\neg (p \vee q) \quad \text{vs.} \quad \neg p \vee q$$
+
+With $p = \text{True}$, $q = \text{True}$:
+
+```python
+not (True or True)   # False  -- negation applies to (True or True)
+not True or True     # True   -- (not True) or True == False or True
+```
+
+Another case — `or` versus `and` evaluated in different orders:
+
+```python
+True or False and False     # True   -- True or (False and False)
+(True or False) and False   # False
+```
+
+Even when parentheses do not change the result, adding them often improves readability:
+
+```python
+# Relies on precedence
+not p or q and r
+
+# Same meaning, but easier to read
+(not p) or (q and r)
+```
+
+### 1-4. Variables
+
+You can assign Boolean values to variables and use them in expressions.
+
+```python
+p = True
+q = False
+
+p          # True
+not p      # False
+p and q    # False
+p or q     # True
+```
+
+Using descriptive names makes Boolean expressions read like natural sentences:
+
+```python
+is_raining   = True
+has_umbrella = False
+
+is_raining and (not has_umbrella)   # True  -- you will get wet
+```
+
+A more complex expression with three variables:
+
+$$(p \vee q) \wedge \neg r$$
 
 ```python
 p = False
@@ -65,21 +170,88 @@ r = True
 (p or q) and (not r)   # False
 ```
 
-### 1-4. Boolean and Comparison Operators
+#### Exercise
 
-Boolean values are the result of comparison operations.
+Let:
+
+- $p$: There is a fire.
+- $q$: The smoke detector goes off.
+- $r$: People leave the building.
+
+Suppose there is no fire, the smoke detector goes off, and people leave the building. Then $p$ is false, $q$ is true, and $r$ is true.
 
 ```python
-3 > 2         # True
-3 == 3        # True
-3 != 2        # True
-type(3 > 2)   # <class 'bool'>
+p = False   # There is a fire.
+q = True    # The smoke detector goes off.
+r = True    # People leave the building.
+```
+
+Translate each formula below into Python code and evaluate it.
+
+(1) $\neg p$
+
+```python
+# (1) There is no fire.
+```
+
+(2) $p \wedge q$
+
+```python
+# (2) There is a fire and the smoke detector goes off.
+```
+
+(3) $p \vee q$
+
+```python
+# (3) There is a fire or the smoke detector goes off.
+```
+
+(4) $\neg p \vee q$
+
+```python
+# (4) There is no fire, or the smoke detector goes off.
+```
+
+(5) $\neg (p \vee q)$
+
+```python
+# (5) It is not the case that there is a fire or the smoke detector goes off.
+```
+
+(6) $(p \wedge q) \vee r$
+
+```python
+# (6) There is a fire and the smoke detector goes off, or people leave the building.
+```
+
+(7) $p \wedge (q \vee r)$
+
+```python
+# (7) There is a fire, and either the smoke detector goes off or people leave the building.
+```
+
+(8) $\neg p \vee (q \wedge r)$
+
+```python
+# (8) There is no fire, or the smoke detector goes off and people leave the building.
+```
+
+(9) $(p \vee q) \wedge \neg r$
+
+```python
+# (9) There is a fire or the smoke detector goes off, and people do not leave the building.
+```
+
+(10) $\neg (p \wedge q) \vee \neg r$
+
+```python
+# (10) It is not the case that there is a fire and the smoke detector goes off, or people do not leave the building.
 ```
 
 ---
 
 ## 2. Truth Table Generator
-
+### Installation and import
 You can use `truth-table-generator` to create a truth table. First, install the package.
 
 ```python
@@ -92,7 +264,9 @@ And import the package.
 import ttg
 ```
 
-A truth table has one column for each input variable. If the input has only one list of strings, each string is considered an input variable:
+### Variables
+
+A truth table has one column for each input variable. When only one list is passed, each string becomes an input variable:
 
 ```python
 print(ttg.Truths(['p', 'q', 'r']))
@@ -119,6 +293,8 @@ If you prefer `True` and `False` instead of `1` and `0`, set `ints=False`:
 print(ttg.Truths(['p', 'q', 'r'], ints=False))
 ```
 
+### Propositions
+
 A second list of strings can be passed with propositional expressions:
 
 ```python
@@ -136,18 +312,22 @@ print(ttg.Truths(['p', 'q'], ['not p', 'p and q', 'p or q'], ints=False))
 +-------+-------+---------+-----------+----------+
 ```
 
+### Operators
+
 It supports the following operators:
 
-| Operator | Symbols                |
-| -------- | ---------------------- |
-| Negation | `not`, `-`, `~`        |
-| Disjunction | `or`                |
-| Conjunction | `and`               |
-| Conditional | `=>`, `implies`     |
-| Biconditional | `=`               |
-| NOR | `nor`                       |
-| Exclusive disjunction | `xor`, `!=` |
-| NAND | `nand`                     |
+| Operator              | Notation                  | Symbols           |
+| --------------------- | ------------------------- | ----------------- |
+| Negation              | $\neg p$                  | `not`, `-`, `~`   |
+| Disjunction           | $p \vee q$                | `or`              |
+| Conjunction           | $p \wedge q$              | `and`             |
+| Conditional           | $p \to q$         | `=>`, `implies`   |
+| Biconditional         | $p \leftrightarrow q$     | `=`               |
+| NOR                   | $p \downarrow q$          | `nor`             |
+| Exclusive disjunction | $p \oplus q$              | `xor`, `!=`       |
+| NAND                  | $p \uparrow q$            | `nand`            |
+
+The characteristic truth tables for each operator can be generated as follows:
 
 ```python
 print(ttg.Truths(['p', 'q'],
@@ -166,23 +346,91 @@ print(ttg.Truths(['p', 'q'],
 +-------+-------+----------+---------+----------+-----------+-----------+-----------+------------+
 ```
 
+#### Exercise
+
+Use `ttg.Truths` to generate the truth table for each of the following compound formulas. Use only `and`, `or`, `not`, `=>`, and `=`.
+
+(1) $(p \wedge q) \to r$
+
+```python
+# (1) print(ttg.Truths(['p', 'q', 'r'], [...], ints=False))
+```
+
+(2) $p \to (q \to r)$
+
+```python
+# (2)
+```
+
+(3) $(p \to q) \wedge (q \to p)$
+
+```python
+# (3)
+```
+
+(4) $(p \vee q) \wedge \neg (p \wedge q)$
+
+```python
+# (4)
+```
+
+(5) $\neg (p \wedge q) \leftrightarrow (\neg p \vee \neg q)$
+
+```python
+# (5)
+```
+
+(6) $(p \to q) \leftrightarrow (\neg p \vee q)$
+
+```python
+# (6)
+```
+
+
 ---
 
-## 3. Logical Laws
+## 3. Semantic concepts
 
 ### 3-1. Tautology and Contradiction
 
-A **tautology** is a formula that is true under every possible assignment of truth values. A **contradiction** is a formula that is false under every possible assignment.
+A tautology is a formula that is true under every possible assignment of truth values. A contradiction is a formula that is false under every possible assignment.
+
+#### Tautology
+
+A tautology: $p \vee \neg p$ is always true.
 
 ```python
-# Tautology: always True
 print(ttg.Truths(['p'], ['p or (not p)']))
+```
 
-# Contradiction: always False
+```
++-----+----------------+
+|  p  |  p or (not p)  |
+|-----+----------------|
+|  1  |       1        |
+|  0  |       1        |
++-----+----------------+
+```
+
+#### Contradiction
+
+A contradiction: $p \wedge \neg p$ is always false.
+
+```python
 print(ttg.Truths(['p'], ['p and (not p)']))
 ```
 
-### 3-2. De Morgan's Laws
+```
++-----+-----------------+
+|  p  |  p and (not p)  |
+|-----+-----------------|
+|  1  |        0        |
+|  0  |        0        |
++-----+-----------------+
+```
+
+### 3-2. Equivalence
+#### De Morgan's Laws
 
 $$\neg (p \wedge q) \equiv \neg p \vee \neg q$$
 $$\neg (p \vee q) \equiv \neg p \wedge \neg q$$
@@ -193,17 +441,41 @@ We can verify these by checking that the two columns are identical in the truth 
 print(ttg.Truths(['p', 'q'],
     ['not (p and q)', '(not p) or (not q)'],
     ints=False))
+```
 
+```
++-------+-------+-----------------+----------------------+
+|   p   |   q   |  not (p and q)  |  (not p) or (not q)  |
+|-------+-------+-----------------+----------------------|
+| True  | True  |      False      |        False         |
+| True  | False |      True       |         True         |
+| False | True  |      True       |         True         |
+| False | False |      True       |         True         |
++-------+-------+-----------------+----------------------+
+```
+
+```python
 print(ttg.Truths(['p', 'q'],
     ['not (p or q)', '(not p) and (not q)'],
     ints=False))
 ```
 
-### 3-3. Conditional and Its Equivalence
+```
++-------+-------+----------------+-----------------------+
+|   p   |   q   |  not (p or q)  |  (not p) and (not q)  |
+|-------+-------+----------------+-----------------------|
+| True  | True  |     False      |         False         |
+| True  | False |     False      |         False         |
+| False | True  |     False      |         False         |
+| False | False |     True       |         True          |
++-------+-------+----------------+-----------------------+
+```
 
-The conditional $p \Rightarrow q$ is logically equivalent to $\neg p \vee q$:
+#### Conditional and Its Equivalence
 
-$$p \Rightarrow q \equiv \neg p \vee q$$
+The conditional $p \to q$ is logically equivalent to $\neg p \vee q$:
+
+$$p \to q \equiv \neg p \vee q$$
 
 ```python
 print(ttg.Truths(['p', 'q'],
@@ -211,54 +483,77 @@ print(ttg.Truths(['p', 'q'],
     ints=False))
 ```
 
-### 3-4. Summary of Key Laws
+```
++-------+-------+----------+----------------+
+|   p   |   q   |  p => q  |  (not p) or q  |
+|-------+-------+----------+----------------|
+| True  | True  |   True   |      True      |
+| True  | False |  False   |     False      |
+| False | True  |   True   |      True      |
+| False | False |   True   |      True      |
++-------+-------+----------+----------------+
+```
 
-| Law | Formula |
-| --- | ------- |
-| Identity | $p \wedge \top \equiv p$,  $p \vee \bot \equiv p$ |
-| Domination | $p \vee \top \equiv \top$,  $p \wedge \bot \equiv \bot$ |
-| Complement | $p \vee \neg p \equiv \top$,  $p \wedge \neg p \equiv \bot$ |
-| Double negation | $\neg \neg p \equiv p$ |
-| De Morgan | $\neg(p \wedge q) \equiv \neg p \vee \neg q$ |
-| De Morgan | $\neg(p \vee q) \equiv \neg p \wedge \neg q$ |
-| Conditional | $p \Rightarrow q \equiv \neg p \vee q$ |
 
----
+### 3-3. Entailment and validity
 
-## 4. Inference Rules
+#### Modus ponens
 
-### 4-1. Modus Ponens
+$$p \to q,\quad p \;\therefore\; q$$
 
-$$p \Rightarrow q,\quad p \;\therefore\; q$$
-
-If $p \Rightarrow q$ is true and $p$ is true, then $q$ must be true.
+If $p \to q$ is true and $p$ is true, then $q$ must be true. Equivalently, $((p \to q) \wedge p) \to q$ is a tautology.
 
 ```python
-print(ttg.Truths(['p', 'q'], ['p => q', 'A and B', 'A'], ints=False))
+print(ttg.Truths(['p', 'q'], ['((p => q) and p) => q'], ints=False))
 ```
 
-We can verify: whenever $p \Rightarrow q$ and $p$ are both true, $q$ is also true.
+```
++-------+-------+---------------------------+
+|   p   |   q   |  ((p => q) and p) => q    |
+|-------+-------+---------------------------|
+| True  | True  |           True            |
+| True  | False |           True            |
+| False | True  |           True            |
+| False | False |           True            |
++-------+-------+---------------------------+
+```
 
-### 4-2. Simplification
+The last column is `True` in every row, confirming the inference is valid.
 
-$$A \Rightarrow A \;\therefore\; A$$
 
+#### Exercise
+(from *forall x: Calgary*, Chapter 12, Exercise C.)
+
+Use truth tables to determine whether each argument is valid or invalid.
+
+(1) $A \to A \;\therefore\; A$
 ```python
-print(ttg.Truths(['p', 'q'], ['(p and p) => p']))
+# (1)
 ```
 
-```
-+-----+-----+------------------+
-|  p  |  q  |  (p and p) => p  |
-|-----+-----+------------------|
-|  1  |  1  |        1         |
-|  1  |  0  |        1         |
-|  0  |  1  |        1         |
-|  0  |  0  |        1         |
-+-----+-----+------------------+
+(2) $A \to (A \wedge \neg A) \;\therefore\; \neg A$
+```python
+# (2)
 ```
 
-This is a tautology: $A \rightarrow A$ is always true.
+(3) $A \vee (B \to A) \;\therefore\; \neg A \to \neg B$
+```python
+# (3)
+```
+
+(4) $A \vee B,\; B \vee C,\; \neg A \;\therefore\; B \wedge C$
+```python
+# (4)
+```
+
+(5) $(B \wedge A) \to C,\; (C \wedge A) \to B \;\therefore\; (C \wedge B) \to A$
+```python
+# (5)
+```
+
+
+
+
 
 ---
 
