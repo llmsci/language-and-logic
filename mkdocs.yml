@@ -39,3 +39,4 @@ extra_javascript:
 nav:
   - Home: index.md
   - Sets: sets/sets.md
+  - Boolean Algebra: bool/bool.md

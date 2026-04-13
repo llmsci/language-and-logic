@@ -22,8 +22,9 @@ jobs:
 
       - name: Prepare MkDocs Content
         run: |
-          mkdir -p docs_temp/sets
+          mkdir -p docs_temp/sets docs_temp/bool
           cp README.md docs_temp/index.md
           rsync -a sets/ docs_temp/sets/
+          rsync -a bool/ docs_temp/bool/
 
       - run: mkdocs gh-deploy --force
