@@ -272,23 +272,6 @@ A truth table has one column for each input variable. When only one list is pass
 print(ttg.Truths(['p', 'q', 'r']))
 ```
 
-```
-+-----+-----+-----+
-|  p  |  q  |  r  |
-|-----+-----+-----|
-|  1  |  1  |  1  |
-|  1  |  1  |  0  |
-|  1  |  0  |  1  |
-|  1  |  0  |  0  |
-|  0  |  1  |  1  |
-|  0  |  1  |  0  |
-|  0  |  0  |  1  |
-|  0  |  0  |  0  |
-+-----+-----+-----+
-```
-
-If you prefer `True` and `False` instead of `1` and `0`, set `ints=False`:
-
 ```python
 print(ttg.Truths(['p', 'q', 'r'], ints=False))
 ```
@@ -301,56 +284,11 @@ A second list of strings can be passed with propositional expressions:
 print(ttg.Truths(['p', 'q'], ['not p', 'p and q', 'p or q'], ints=False))
 ```
 
-```
-+-------+-------+---------+-----------+----------+
-|   p   |   q   |  not p  |  p and q  |  p or q  |
-|-------+-------+---------+-----------+----------|
-| True  | True  |  False  |   True    |   True   |
-| True  | False |  False  |   False   |   True   |
-| False | True  |  True   |   False   |   True   |
-| False | False |  True   |   False   |  False   |
-+-------+-------+---------+-----------+----------+
-```
-
-### Operators
-
-It supports the following operators:
-
-| Operator              | Notation                  | Symbols           |
-| --------------------- | ------------------------- | ----------------- |
-| Negation              | $\neg p$                  | `not`, `-`, `~`   |
-| Disjunction           | $p \vee q$                | `or`              |
-| Conjunction           | $p \wedge q$              | `and`             |
-| Conditional           | $p \to q$         | `=>`, `implies`   |
-| Biconditional         | $p \leftrightarrow q$     | `=`               |
-| NOR                   | $p \downarrow q$          | `nor`             |
-| Exclusive disjunction | $p \oplus q$              | `xor`, `!=`       |
-| NAND                  | $p \uparrow q$            | `nand`            |
-
-The characteristic truth tables for each operator can be generated as follows:
-
 ```python
 print(ttg.Truths(['p', 'q'],
     ['p => q', 'p = q', 'p or q', 'p nor q', 'p xor q', 'p and q', 'p nand q'],
     ints=False))
 ```
-
-```
-+-------+-------+----------+---------+----------+-----------+-----------+-----------+------------+
-|   p   |   q   |  p => q  |  p = q  |  p or q  |  p nor q  |  p xor q  |  p and q  |  p nand q  |
-|-------+-------+----------+---------+----------+-----------+-----------+-----------+------------|
-| True  | True  |   True   |  True   |   True   |   False   |   False   |   True    |   False    |
-| True  | False |  False   |  False  |   True   |   False   |   True    |   False   |    True    |
-| False | True  |   True   |  False  |   True   |   False   |   True    |   False   |    True    |
-| False | False |   True   |  True   |  False   |   True    |   False   |   False   |    True    |
-+-------+-------+----------+---------+----------+-----------+-----------+-----------+------------+
-```
-
-#### Exercise
-
-Use `ttg.Truths` to generate the truth table for each of the following compound formulas. Use only `and`, `or`, `not`, `=>`, and `=`.
-
-(1) $(p \wedge q) \to r$
 
 ```python
 # (1) print(ttg.Truths(['p', 'q', 'r'], [...], ints=False))
@@ -403,55 +341,14 @@ A tautology: $p \vee \neg p$ is always true.
 print(ttg.Truths(['p'], ['p or (not p)']))
 ```
 
-```
-+-----+----------------+
-|  p  |  p or (not p)  |
-|-----+----------------|
-|  1  |       1        |
-|  0  |       1        |
-+-----+----------------+
-```
-
-#### Contradiction
-
-A contradiction: $p \wedge \neg p$ is always false.
-
 ```python
 print(ttg.Truths(['p'], ['p and (not p)']))
 ```
-
-```
-+-----+-----------------+
-|  p  |  p and (not p)  |
-|-----+-----------------|
-|  1  |        0        |
-|  0  |        0        |
-+-----+-----------------+
-```
-
-### 3-2. Equivalence
-#### De Morgan's Laws
-
-$$\neg (p \wedge q) \equiv \neg p \vee \neg q$$
-$$\neg (p \vee q) \equiv \neg p \wedge \neg q$$
-
-We can verify these by checking that the two columns are identical in the truth table:
 
 ```python
 print(ttg.Truths(['p', 'q'],
     ['not (p and q)', '(not p) or (not q)'],
     ints=False))
-```
-
-```
-+-------+-------+-----------------+----------------------+
-|   p   |   q   |  not (p and q)  |  (not p) or (not q)  |
-|-------+-------+-----------------+----------------------|
-| True  | True  |      False      |        False         |
-| True  | False |      True       |         True         |
-| False | True  |      True       |         True         |
-| False | False |      True       |         True         |
-+-------+-------+-----------------+----------------------+
 ```
 
 ```python
@@ -460,40 +357,11 @@ print(ttg.Truths(['p', 'q'],
     ints=False))
 ```
 
-```
-+-------+-------+----------------+-----------------------+
-|   p   |   q   |  not (p or q)  |  (not p) and (not q)  |
-|-------+-------+----------------+-----------------------|
-| True  | True  |     False      |         False         |
-| True  | False |     False      |         False         |
-| False | True  |     False      |         False         |
-| False | False |     True       |         True          |
-+-------+-------+----------------+-----------------------+
-```
-
-#### Conditional and Its Equivalence
-
-The conditional $p \to q$ is logically equivalent to $\neg p \vee q$:
-
-$$p \to q \equiv \neg p \vee q$$
-
 ```python
 print(ttg.Truths(['p', 'q'],
     ['p => q', '(not p) or q'],
     ints=False))
 ```
-
-```
-+-------+-------+----------+----------------+
-|   p   |   q   |  p => q  |  (not p) or q  |
-|-------+-------+----------+----------------|
-| True  | True  |   True   |      True      |
-| True  | False |  False   |     False      |
-| False | True  |   True   |      True      |
-| False | False |   True   |      True      |
-+-------+-------+----------+----------------+
-```
-
 
 ### 3-3. Entailment and validity
 
@@ -506,20 +374,6 @@ If $p \to q$ is true and $p$ is true, then $q$ must be true. Equivalently, $((p 
 ```python
 print(ttg.Truths(['p', 'q'], ['((p => q) and p) => q'], ints=False))
 ```
-
-```
-+-------+-------+---------------------------+
-|   p   |   q   |  ((p => q) and p) => q    |
-|-------+-------+---------------------------|
-| True  | True  |           True            |
-| True  | False |           True            |
-| False | True  |           True            |
-| False | False |           True            |
-+-------+-------+---------------------------+
-```
-
-The last column is `True` in every row, confirming the inference is valid.
-
 
 #### Exercise
 (from *forall x: Calgary*, Chapter 12, Exercise C.)
