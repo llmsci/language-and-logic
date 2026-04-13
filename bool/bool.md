@@ -186,6 +186,14 @@ q = True    # The smoke detector goes off.
 r = True    # People leave the building.
 ```
 
+Or descriptive variable names:
+
+```python
+fire = False
+alarm = True
+people_leave = True
+```
+
 Translate each formula below into Python code and evaluate it.
 
 (1) $\neg p$
