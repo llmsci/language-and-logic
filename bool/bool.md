@@ -130,10 +130,10 @@ Even when parentheses do not change the result, adding them often improves reada
 
 ```python
 # Relies on precedence
-not p or q and r
+not True or False and True
 
 # Same meaning, but easier to read
-(not p) or (q and r)
+(not True) or (False and True)
 ```
 
 ### 1-4. Variables
