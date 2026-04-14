@@ -274,11 +274,26 @@ import ttg
 
 ### Variables
 
-A truth table has one column for each input variable. When only one list is passed, each string becomes an input variable:
+A Boolean variable takes one of two values: `True` or `False`. With $k$ variables, there are $2^k$ possible assignments of truth values. For example, three variables $p$, $q$, $r$ yield $2^3 = 8$ possible assignments:
+
+|  $p$  |  $q$  |  $r$  |
+| :---: | :---: | :---: |
+| True  | True  | True  |
+| True  | True  | False |
+| True  | False | True  |
+| True  | False | False |
+| False | True  | True  |
+| False | True  | False |
+| False | False | True  |
+| False | False | False |
+
+`ttg.Truths` enumerates these assignments automatically. Pass a list of variable names, and it produces one column per variable:
 
 ```python
 print(ttg.Truths(['p', 'q', 'r']))
 ```
+
+If you prefer `True` and `False` instead of `1` and `0`, set `ints=False`:
 
 ```python
 print(ttg.Truths(['p', 'q', 'r'], ints=False))
@@ -286,17 +301,58 @@ print(ttg.Truths(['p', 'q', 'r'], ints=False))
 
 ### Propositions
 
-A second list of strings can be passed with propositional expressions:
+From each assignment of truth values, we can compute the value of any compound proposition built from the variables. The table below shows the three elementary operators:
+
+|  $p$  |  $q$  | $\neg p$ | $p \wedge q$ | $p \vee q$ |
+| :---: | :---: | :------: | :----------: | :--------: |
+| True  | True  |  False   |     True     |    True    |
+| True  | False |  False   |    False     |    True    |
+| False | True  |   True   |    False     |    True    |
+| False | False |   True   |    False     |   False    |
+
+To generate such a table with `ttg.Truths`, pass a second list containing the propositional expressions as strings:
 
 ```python
 print(ttg.Truths(['p', 'q'], ['not p', 'p and q', 'p or q'], ints=False))
 ```
+
+### Operators
+
+It supports the following operators:
+
+| Operator              | Notation                  | `ttg` symbols     |
+| --------------------- | ------------------------- | ----------------- |
+| Negation              | $\neg p$                  | `not`, `-`, `~`   |
+| Disjunction           | $p \vee q$                | `or`              |
+| Conjunction           | $p \wedge q$              | `and`             |
+| Conditional           | $p \to q$                 | `=>`, `implies`   |
+| Biconditional         | $p \leftrightarrow q$     | `=`               |
+| NOR                   | $p \downarrow q$          | `nor`             |
+| Exclusive disjunction | $p \oplus q$              | `xor`, `!=`       |
+| NAND                  | $p \uparrow q$            | `nand`            |
+
+Each operator has a characteristic truth table that fully defines its meaning:
+
+|  $p$  |  $q$  | $p \to q$ | $p \leftrightarrow q$ | $p \vee q$ | $p \downarrow q$ | $p \oplus q$ | $p \wedge q$ | $p \uparrow q$ |
+| :---: | :---: | :-------: | :-------------------: | :--------: | :--------------: | :----------: | :----------: | :------------: |
+| True  | True  |   True    |         True          |    True    |      False       |    False     |     True     |     False      |
+| True  | False |   False   |         False         |    True    |      False       |     True     |    False     |      True      |
+| False | True  |   True    |         False         |    True    |      False       |     True     |    False     |      True      |
+| False | False |   True    |         True          |   False    |       True       |    False     |    False     |      True      |
+
+To reproduce this table with `ttg.Truths`:
 
 ```python
 print(ttg.Truths(['p', 'q'],
     ['p => q', 'p = q', 'p or q', 'p nor q', 'p xor q', 'p and q', 'p nand q'],
     ints=False))
 ```
+
+#### Exercise
+
+Use `ttg.Truths` to generate the truth table for each of the following compound formulas. Use only `and`, `or`, `not`, `=>`, and `=`.
+
+(1) $(p \wedge q) \to r$
 
 ```python
 # (1) print(ttg.Truths(['p', 'q', 'r'], [...], ints=False))
@@ -339,19 +395,53 @@ print(ttg.Truths(['p', 'q'],
 
 ### 3-1. Tautology and Contradiction
 
-A tautology is a formula that is true under every possible assignment of truth values. A contradiction is a formula that is false under every possible assignment.
-
 #### Tautology
 
-A tautology: $p \vee \neg p$ is always true.
+A proposition is a tautology iff every row in its truth table is True. $p \vee \neg p$ is an example:
+
+| $p$   | $p \vee \neg p$ |
+| :---: | :-------------: |
+| True  |      True       |
+| False |      True       |
+
+Verify this using `ttg`:
 
 ```python
 print(ttg.Truths(['p'], ['p or (not p)']))
 ```
 
+#### Contradiction
+
+A proposition is a contradiction iff every row in its truth table is False. $p \wedge \neg p$ is an example:
+
+| $p$   | $p \wedge \neg p$ |
+| :---: | :---------------: |
+| True  |       False       |
+| False |       False       |
+
+Verify this using `ttg`:
+
 ```python
 print(ttg.Truths(['p'], ['p and (not p)']))
 ```
+
+### 3-2. Equivalence
+#### De Morgan's Laws
+
+The negation of a conjunction is equivalent to the disjunction of the negations:
+
+$$\neg (p \wedge q) \equiv \neg p \vee \neg q$$
+
+We can verify this by checking that the two columns are identical in the truth table:
+
+|  $p$  |  $q$  | $\neg (p \wedge q)$ | $\neg p \vee \neg q$ |
+| :---: | :---: | :-----------------: | :------------------: |
+| True  | True  |        False        |        False         |
+| True  | False |        True         |         True         |
+| False | True  |        True         |         True         |
+| False | False |        True         |         True         |
+
+Verify this using `ttg`:
 
 ```python
 print(ttg.Truths(['p', 'q'],
@@ -359,11 +449,44 @@ print(ttg.Truths(['p', 'q'],
     ints=False))
 ```
 
+
+The negation of a disjunction is equivalent to the conjunction of the negations:
+
+$$\neg (p \vee q) \equiv \neg p \wedge \neg q$$
+
+We can verify this by checking that the two columns are identical in the truth table:
+
+|  $p$  |  $q$  | $\neg (p \vee q)$ | $\neg p \wedge \neg q$ |
+| :---: | :---: | :---------------: | :--------------------: |
+| True  | True  |       False       |         False          |
+| True  | False |       False       |         False          |
+| False | True  |       False       |         False          |
+| False | False |       True        |          True          |
+
+Verify this using `ttg`:
+
 ```python
 print(ttg.Truths(['p', 'q'],
     ['not (p or q)', '(not p) and (not q)'],
     ints=False))
 ```
+
+#### Conditional and Its Equivalence
+
+The conditional $p \to q$ is logically equivalent to $\neg p \vee q$:
+
+$$p \to q \equiv \neg p \vee q$$
+
+We can verify this by checking that the two columns are identical in the truth table:
+
+|  $p$  |  $q$  | $p \to q$ | $\neg p \vee q$ |
+| :---: | :---: | :-------: | :-------------: |
+| True  | True  |   True    |      True       |
+| True  | False |   False   |      False      |
+| False | True  |   True    |      True       |
+| False | False |   True    |      True       |
+
+Verify this using `ttg`:
 
 ```python
 print(ttg.Truths(['p', 'q'],
@@ -371,16 +494,47 @@ print(ttg.Truths(['p', 'q'],
     ints=False))
 ```
 
+
 ### 3-3. Entailment and validity
 
 #### Modus ponens
 
+Modus ponens is an elementary example of a valid argument. Given a conditional $p \to q$ and its antecedent $p$, we can conclude the consequent $q$.
+
 $$p \to q,\quad p \;\therefore\; q$$
 
-If $p \to q$ is true and $p$ is true, then $q$ must be true. Equivalently, $((p \to q) \wedge p) \to q$ is a tautology.
+An argument is valid if whenever all premises are true, the conclusion is also true. There are two ways to verify this with a truth table.
+
+One way is to show that $((p \to q) \wedge p) \to q$ is a tautology — every row is True:
+
+|  $p$  |  $q$  | $((p \to q) \wedge p) \to q$ |
+| :---: | :---: | :--------------------------: |
+| True  | True  |             True             |
+| True  | False |             True             |
+| False | True  |             True             |
+| False | False |             True             |
+
+Verify this using `ttg`:
 
 ```python
 print(ttg.Truths(['p', 'q'], ['((p => q) and p) => q'], ints=False))
+```
+
+Another way is to add a column for each premise and a column for the conclusion, then check that whenever all premise columns are True, the conclusion column is also True:
+
+|  $p$  |  $q$  | $p \to q$ | $p$ | $q$ |
+| :---: | :---: | :-------: | :-: | :-: |
+| True  | True  |   True    | True  | True  |
+| True  | False |   False   | True  | False |
+| False | True  |   True    | False | True  |
+| False | False |   True    | False | False |
+
+The only row where both premises ($p \to q$ and $p$) are True is the first row, and in that row the conclusion $q$ is also True.
+
+Verify this using `ttg`:
+
+```python
+print(ttg.Truths(['p', 'q'], ['(p => q)', 'p', 'q'], ints=False))
 ```
 
 #### Exercise
