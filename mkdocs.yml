@@ -40,3 +40,4 @@ nav:
   - Home: index.md
   - Sets: sets/sets.md
   - Boolean Algebra: bool/bool.md
+  - Logic Gates: logic-gates/logic-gate.md

@@ -1,0 +1,38 @@
+<svg width="400" height="140" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+    .gate { stroke: #1e293b; stroke-width: 2.5; fill: #f8fafc; stroke-linejoin: round; }
+    .lbl  { font-family: -apple-system, system-ui, sans-serif; font-size: 15px; fill: #1e293b; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    .sub  { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; fill: #64748b; text-anchor: middle; }
+    .glbl { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; fill: #475569; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+
+  <!-- Background -->
+  <rect width="400" height="140" fill="white" rx="10" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Input wires -->
+  <line x1="65" y1="47" x2="150" y2="47" class="wire"/>
+  <line x1="65" y1="93" x2="150" y2="93" class="wire"/>
+
+  <!-- OR gate body:
+       Left edge curves inward (concave), control point at (165, 70)
+       Top edge arcs to output point
+       Bottom edge arcs to output point -->
+  <path d="M 145 27 Q 165 70 145 113 Q 190 113 228 70 Q 190 27 145 27 Z" class="gate"/>
+
+  <!-- Gate label -->
+  <text x="183" y="70" class="glbl">OR</text>
+
+  <!-- Output wire -->
+  <line x1="228" y1="70" x2="320" y2="70" class="wire"/>
+
+  <!-- Input labels -->
+  <text x="45" y="47" class="lbl">A</text>
+  <text x="45" y="93" class="lbl">B</text>
+
+  <!-- Output label -->
+  <text x="348" y="70" class="lbl">F</text>
+
+  <!-- Annotation -->
+  <text x="274" y="90" class="sub">F = A ∨ B</text>
+</svg>

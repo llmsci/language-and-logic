@@ -1,0 +1,36 @@
+<svg width="400" height="140" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+    .gate { stroke: #1e293b; stroke-width: 2.5; fill: #f8fafc; stroke-linejoin: round; }
+    .lbl  { font-family: -apple-system, system-ui, sans-serif; font-size: 15px; fill: #1e293b; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    .sub  { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; fill: #64748b; text-anchor: middle; }
+    .glbl { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; fill: #475569; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+
+  <!-- Background -->
+  <rect width="400" height="140" fill="white" rx="10" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Input wires -->
+  <line x1="65" y1="47" x2="145" y2="47" class="wire"/>
+  <line x1="65" y1="93" x2="145" y2="93" class="wire"/>
+
+  <!-- AND gate body: left edge x=145, arc center (185,70), radius 43 -->
+  <!--   top-left (145,27)  →  top-right (185,27)  →  arc to (185,113)  →  bottom-left (145,113) -->
+  <path d="M 145 27 L 185 27 A 43 43 0 0 1 185 113 L 145 113 Z" class="gate"/>
+
+  <!-- Gate label -->
+  <text x="172" y="70" class="glbl">AND</text>
+
+  <!-- Output wire -->
+  <line x1="228" y1="70" x2="320" y2="70" class="wire"/>
+
+  <!-- Input labels -->
+  <text x="45" y="47" class="lbl">A</text>
+  <text x="45" y="93" class="lbl">B</text>
+
+  <!-- Output label -->
+  <text x="348" y="70" class="lbl">F</text>
+
+  <!-- Annotation -->
+  <text x="274" y="90" class="sub">F = A ∧ B</text>
+</svg>

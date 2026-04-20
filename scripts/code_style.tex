@@ -4,7 +4,16 @@
 \definecolor{barcolor}{gray}{0.6}
 \definecolor{shadecolor}{gray}{0.97}
 
-\renewenvironment{Shaded}{
-  \def\FrameCommand{\textcolor{barcolor}{\vrule width 3pt}\hspace{8pt}\colorbox{shadecolor}}%
-  \MakeFramed{\advance\hsize-\width \FrameRestore}
-}{\endMakeFramed}
+\makeatletter
+\@ifundefined{Shaded}{%
+  \newenvironment{Shaded}{%
+    \def\FrameCommand{\textcolor{barcolor}{\vrule width 3pt}\hspace{8pt}\colorbox{shadecolor}}%
+    \MakeFramed{\advance\hsize-\width \FrameRestore}%
+  }{\endMakeFramed}%
+}{%
+  \renewenvironment{Shaded}{%
+    \def\FrameCommand{\textcolor{barcolor}{\vrule width 3pt}\hspace{8pt}\colorbox{shadecolor}}%
+    \MakeFramed{\advance\hsize-\width \FrameRestore}%
+  }{\endMakeFramed}%
+}
+\makeatother

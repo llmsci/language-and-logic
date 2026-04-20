@@ -16,9 +16,22 @@ OUTPUT_PDF="${DIRNAME}/${BASENAME}.pdf"
 echo "Preprocessing emojis..."
 python3 scripts/build_pdf.py "$INPUT_FILE" "$TEMP_MD"
 
+echo "Converting SVGs to PDF..."
+ASSETS_DIR="${DIRNAME}/assets"
+if [ -d "$ASSETS_DIR" ]; then
+    for svg in "$ASSETS_DIR"/*.svg; do
+        [ -f "$svg" ] || continue
+        pdf="${svg%.svg}.pdf"
+        python3 -c "import cairosvg; cairosvg.svg2pdf(url='$svg', write_to='$pdf')" && echo "  $svg -> $pdf"
+    done
+    sed -i '' 's/\.svg)/.pdf)/g' "$TEMP_MD"
+fi
+
 echo "Generating PDF via Pandoc..."
 pandoc "$TEMP_MD" -o "$OUTPUT_PDF" \
     --pdf-engine=xelatex \
+    --resource-path="${DIRNAME}" \
+    --syntax-highlighting=tango \
     -V geometry:"b5paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=2cm,footskip=0.8cm" \
     -V colorlinks=true \
     -V mainfont="Palatino" \
