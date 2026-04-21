@@ -41,3 +41,4 @@ nav:
   - Sets: sets/sets.md
   - Boolean Algebra: bool/bool.md
   - Logic Gates: logic-gates/logic-gate.md
+  - Logical Operators: logic-operators/logic-operators.md

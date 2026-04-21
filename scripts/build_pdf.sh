@@ -34,7 +34,7 @@ pandoc "$TEMP_MD" -o "$OUTPUT_PDF" \
     --syntax-highlighting=tango \
     -V geometry:"b5paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=2cm,footskip=0.8cm" \
     -V colorlinks=true \
-    -V mainfont="Palatino" \
+    -V mainfont="STIXGeneral" \
     -V fontsize=12pt \
     -V header-includes="\usepackage{amssymb}" \
     --include-in-header="scripts/code_style.tex"

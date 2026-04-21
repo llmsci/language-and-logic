@@ -22,10 +22,11 @@ jobs:
 
       - name: Prepare MkDocs Content
         run: |
-          mkdir -p docs_temp/sets docs_temp/bool docs_temp/logic-gates
+          mkdir -p docs_temp/sets docs_temp/bool docs_temp/logic-gates docs_temp/logic-operators
           cp README.md docs_temp/index.md
           rsync -a sets/ docs_temp/sets/
           rsync -a bool/ docs_temp/bool/
           rsync -a logic-gates/ docs_temp/logic-gates/
+          rsync -a logic-operators/ docs_temp/logic-operators/
 
       - run: mkdocs gh-deploy --force
