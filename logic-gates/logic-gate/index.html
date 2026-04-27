@@ -1,0 +1,1772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Language and Logic">
+      
+      
+      
+        <link rel="canonical" href="https://llmsci.github.io/language-and-logic/logic-gates/logic-gate/">
+      
+      
+        <link rel="prev" href="../../bool/bool/">
+      
+      
+        <link rel="next" href="../../logic-operators/logic-operators/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Logic Gates - Language and Logic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logic-gates" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Language and Logic" class="md-header__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Language and Logic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Logic Gates
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Language and Logic" class="md-nav__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Language and Logic
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sets/sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bool/bool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Gates
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-boole-and-shannon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Boole and Shannon
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Boole and Shannon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#george-boole-18151864" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        George Boole (1815–1864)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claude-shannon-19162001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Shannon (1916–2001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-logical-operations-and-logic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Logical Operations and Logic Circuits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Logical Operations and Logic Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AND">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NOT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-logic-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Logic Gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Logic Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XOR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XOR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAND
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAND">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-from-truth-tables-to-logical-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. From Truth Tables to Logical Expressions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-a-natural-language-logical-expression-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise A. Natural Language -&gt; Logical Expression -&gt; Circuit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise A. Natural Language -&gt; Logical Expression -&gt; Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-1-light-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-1: Light Switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-2-alarm-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-2: Alarm Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-3-seatbelt-alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-3: Seatbelt Alert
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-4-seatbelt-alert-extended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-4: Seatbelt Alert (Extended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-5-security-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-5: Security System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-6-security-system-extended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-6: Security System (Extended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-7-night-light" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-7: Night Light
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-b-calculations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise B. Calculations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise B. Calculations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-1-odd-parity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-1: Odd Parity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-2-equality-comparator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-2: Equality Comparator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-3-half-adder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-3: Half Adder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-4-three-person-majority-vote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-4: Three-Person Majority Vote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-5-five-person-majority-vote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-5: Five-Person Majority Vote
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic-operators/logic-operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logical Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rules/rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Rules for TFL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-boole-and-shannon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Boole and Shannon
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Boole and Shannon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#george-boole-18151864" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        George Boole (1815–1864)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claude-shannon-19162001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Shannon (1916–2001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-logical-operations-and-logic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Logical Operations and Logic Circuits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Logical Operations and Logic Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AND">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NOT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-logic-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Logic Gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Logic Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XOR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XOR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAND
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAND">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-from-truth-tables-to-logical-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. From Truth Tables to Logical Expressions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-a-natural-language-logical-expression-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise A. Natural Language -&gt; Logical Expression -&gt; Circuit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise A. Natural Language -&gt; Logical Expression -&gt; Circuit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-1-light-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-1: Light Switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-2-alarm-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-2: Alarm Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-3-seatbelt-alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-3: Seatbelt Alert
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-4-seatbelt-alert-extended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-4: Seatbelt Alert (Extended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-5-security-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-5: Security System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-6-security-system-extended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-6: Security System (Extended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-a-7-night-light" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem A-7: Night Light
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-b-calculations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise B. Calculations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise B. Calculations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-1-odd-parity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-1: Odd Parity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-2-equality-comparator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-2: Equality Comparator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-3-half-adder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-3: Half Adder
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-4-three-person-majority-vote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-4: Three-Person Majority Vote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-b-5-five-person-majority-vote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem B-5: Five-Person Majority Vote
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="logic-gates">Logic Gates</h1>
+<h2 id="getting-started">Getting Started</h2>
+<p>For this lab, we will use <a href="https://logic.ly/demo/">logic.ly</a> - a simulator that lets you build logic circuits by drag-and-drop in a web browser.</p>
+<h2 id="1-boole-and-shannon">1. Boole and Shannon</h2>
+<h3 id="george-boole-18151864">George Boole (1815–1864)</h3>
+<p>Boolean algebra is a mathematical system that treats true/false as 0 and 1, and logical connectives as operations on 0 and 1. The operators <span class="arithmatex">\(\land\)</span>, <span class="arithmatex">\(\lor\)</span>, and <span class="arithmatex">\(\neg\)</span> we use in class are the fundamental operations of this system.</p>
+<h3 id="claude-shannon-19162001">Claude Shannon (1916–2001)</h3>
+<p>In 1937, MIT graduate student Claude Shannon showed in his master's thesis <em>A Symbolic Analysis of Relay and Switching Circuits</em> that the logical operations of Boolean algebra correspond exactly to electrical switching circuits.</p>
+<p>A logic gate is not just a truth table in the mind - it is a physical circuit implemented with real electronic components. Early gates used relays (electrically operated automatic switches); after the invention of the transistor in 1947, transistors took over; today they are integrated by the billions inside IC chips.</p>
+<h2 id="2-logical-operations-and-logic-circuits">2. Logical Operations and Logic Circuits</h2>
+<p>Shannon's core insight is that the <span class="arithmatex">\(\land\)</span>, <span class="arithmatex">\(\lor\)</span>, and <span class="arithmatex">\(\neg\)</span> operations can be physically implemented using nothing more than wires and switches. AND is series, OR is parallel, NOT is inversion.</p>
+<table>
+<thead>
+<tr>
+<th>Logical operation</th>
+<th>Logic gate</th>
+<th>Switch circuit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\neg p\)</span></td>
+<td>NOT</td>
+<td>State inversion</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p \land q\)</span></td>
+<td>AND</td>
+<td>Switches in series</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p \lor q\)</span></td>
+<td>OR</td>
+<td>Switches in parallel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="and">AND</h3>
+<p>Thinking of AND as switches in series: current flows - and the lamp turns on - only when both switch A and switch B are closed. This behavior matches the truth table of <span class="arithmatex">\(A \land B\)</span> exactly.</p>
+<p><img alt="AND circuit - series connection" src="../assets/circuit-and.svg" /></p>
+<p>When designing logic circuits, the AND gate is represented by the D-shaped symbol below.</p>
+<p><img alt="AND logic gate" src="../assets/gate-and.svg" /></p>
+<h4 id="exercise">Exercise</h4>
+<ul>
+<li>(1) Build a circuit using an AND gate that takes two inputs and produces one output.</li>
+</ul>
+<h3 id="or">OR</h3>
+<p>Thinking of OR as switches in parallel: current flows as long as at least one switch is closed. The logical expression is <span class="arithmatex">\(A \lor B\)</span>.</p>
+<p><img alt="OR circuit - parallel connection" src="../assets/circuit-or.svg" /></p>
+<p>When designing logic circuits, the OR gate is represented by the arrow-head-shaped symbol below.</p>
+<p><img alt="OR logic gate" src="../assets/gate-or.svg" /></p>
+<h4 id="exercise_1">Exercise</h4>
+<ul>
+<li>(1) Build a circuit using an OR gate that takes two inputs and produces one output.</li>
+</ul>
+<h3 id="not">NOT</h3>
+<p>NOT inverts the state of a switch. A relay - an electrically controlled automatic switch - can reverse its open/closed state. In logic circuit diagrams, NOT is represented as a triangle with a small circle (bubble) at its output.</p>
+<p><img alt="NOT logic gate" src="../assets/gate-not.svg" /></p>
+<h4 id="exercise_2">Exercise</h4>
+<ul>
+<li>(1) Build a circuit using a NOT gate that takes one input and produces one output.</li>
+</ul>
+<h2 id="3-logic-gates">3. Logic Gates</h2>
+<p>A logic gate is an electronic circuit that implements a logical operator. In addition to AND, OR, and NOT, the following gates are commonly used.</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Gate name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\neg(p \land q)\)</span></td>
+<td>NAND</td>
+<td>Negation of AND - 1 if any input is 0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\neg(p \lor q)\)</span></td>
+<td>NOR</td>
+<td>Negation of OR - 1 only when both inputs are 0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p \oplus q\)</span></td>
+<td>XOR</td>
+<td>Exclusive OR - 1 when inputs differ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="xor">XOR</h3>
+<p>XOR corresponds to the exclusive sense of "or" in everyday language. When someone says "choose coffee or tea," choosing both is usually not intended. The difference between <span class="arithmatex">\(\lor\)</span> (inclusive) and XOR (exclusive) can be verified directly with circuits.</p>
+<p>XOR can be decomposed as follows, so it is always possible to build a circuit that produces the same output using only NOT, AND, and OR.</p>
+<div class="arithmatex">\[
+p \oplus q \equiv (p \land \neg q) \lor (\neg p \land q)
+\]</div>
+<h4 id="exercise_3">Exercise</h4>
+<ul>
+<li>(1) Build a circuit using an XOR gate that takes two inputs and produces one output.</li>
+<li>(2) Build a circuit using only NOT, AND, and OR gates that produces the same output as an XOR gate.</li>
+</ul>
+<h3 id="nand">NAND</h3>
+<p>NAND alone can implement NOT, AND, and OR - making it a <strong>universal gate</strong>. NAND(A, A) gives NOT(A); NOT(NAND(A, B)) gives AND(A, B); NAND(NOT(A), NOT(B)) gives OR(A, B). (You may have heard the term <em>NAND flash memory</em> when shopping for external storage - the "NAND" there comes from this gate.)</p>
+<p>By De Morgan's law, the following two expressions are logically equivalent, so the two corresponding circuits produce identical outputs.</p>
+<div class="arithmatex">\[
+\neg(p \land q) \equiv \neg p \lor \neg q
+\]</div>
+<h4 id="exercise_4">Exercise</h4>
+<ul>
+<li>(1) Build a circuit using a NAND gate that takes two inputs and produces one output.</li>
+<li>(2) Build a circuit using NOT and AND that produces the same output as a NAND gate.</li>
+<li>(3) Build a circuit using NOT and OR that produces the same output as a NAND gate.</li>
+<li>(4) Build a NOT gate using only NAND gates.</li>
+<li>(5) Build an AND gate using only NAND gates.</li>
+<li>(6) Build an OR gate using only NAND gates.</li>
+<li>(7) <em>(Challenge)</em> Build a circuit equivalent to XOR using exactly four NAND gates.</li>
+</ul>
+<h2 id="4-from-truth-tables-to-logical-expressions">4. From Truth Tables to Logical Expressions</h2>
+<p>Starting from a truth table, we can derive a logical expression and then build a logic circuit. Consider the following truth table as an example.</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(p\)</span></th>
+<th><span class="arithmatex">\(q\)</span></th>
+<th><span class="arithmatex">\(r\)</span></th>
+<th><span class="arithmatex">\(F\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>We can build a logical expression by locating the rows where <span class="arithmatex">\(F = 1\)</span>. The procedure is:</p>
+<ul>
+<li>(1) Find all rows where <span class="arithmatex">\(F = 1\)</span>.</li>
+<li>(2) Express each row as a conjunction (<span class="arithmatex">\(\land\)</span>). Example: <span class="arithmatex">\((p=0, q=1, r=0)\)</span> -&gt; <span class="arithmatex">\(\neg p \land q \land \neg r\)</span></li>
+<li>(3) Connect all terms with <span class="arithmatex">\(\lor\)</span> to form the complete expression.</li>
+<li>(4) Build the logic circuit and verify that its outputs match the truth table.</li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<h3 id="exercise-a-natural-language-logical-expression-circuit">Exercise A. Natural Language -&gt; Logical Expression -&gt; Circuit</h3>
+<p>Use the following procedure for every problem.</p>
+<ul>
+<li>(1) Read the sentence and define propositional variables.</li>
+<li>(2) Identify the logical structure of the sentence and write a logical expression.</li>
+<li>(3) Build a truth table to verify that the expression captures the intended meaning.</li>
+<li>(4) Build the logic circuit and confirm that it matches the truth table.</li>
+</ul>
+<p><strong>Example</strong></p>
+<blockquote>
+<p>"When the security system is active, an alarm sounds if the door or window is open."</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(A\)</span> = security system active</li>
+<li><span class="arithmatex">\(D\)</span> = door open</li>
+<li><span class="arithmatex">\(W\)</span> = window open</li>
+</ul>
+<div class="arithmatex">\[
+F = A \land (D \lor W)
+\]</div>
+<p>This requires one OR gate and one AND gate - two gates in total.</p>
+<h4 id="problem-a-1-light-switch">Problem A-1: Light Switch</h4>
+<blockquote>
+<p>There are two switches, A and B. The room light turns on only when exactly one of the two switches is on.</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(A\)</span>: Switch A is on.</li>
+<li><span class="arithmatex">\(B\)</span>: Switch B is on.</li>
+</ul>
+<h4 id="problem-a-2-alarm-condition">Problem A-2: Alarm Condition</h4>
+<blockquote>
+<p>An alarm sounds when the door is open and either a person is detected or it is nighttime.</p>
+</blockquote>
+<ul>
+<li>Define the variables.</li>
+<li>Write the logical expression and verify with a truth table.</li>
+<li>Build the logic circuit and verify with a truth table.</li>
+</ul>
+<h4 id="problem-a-3-seatbelt-alert">Problem A-3: Seatbelt Alert</h4>
+<blockquote>
+<p>An alarm sounds if the door is open, or if the key is inserted and the seatbelt is not fastened.</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(D\)</span>: Door is open</li>
+<li><span class="arithmatex">\(K\)</span>: Key is inserted</li>
+<li><span class="arithmatex">\(B\)</span>: Seatbelt is fastened</li>
+</ul>
+<h4 id="problem-a-4-seatbelt-alert-extended">Problem A-4: Seatbelt Alert (Extended)</h4>
+<blockquote>
+<p>An alarm sounds when the driver or front passenger is seated, the ignition is on, and that occupant's seatbelt is not fastened.</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(D\)</span>: Driver is seated</li>
+<li><span class="arithmatex">\(P\)</span>: Front passenger is seated</li>
+<li><span class="arithmatex">\(I\)</span>: Ignition is on</li>
+<li><span class="arithmatex">\(B_d\)</span>: Driver's seatbelt is fastened</li>
+<li><span class="arithmatex">\(B_p\)</span>: Passenger's seatbelt is fastened</li>
+</ul>
+<h4 id="problem-a-5-security-system">Problem A-5: Security System</h4>
+<blockquote>
+<p>When the security system is active, an alarm sounds if the front door or a window is open.</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(A\)</span>: Security system active</li>
+<li><span class="arithmatex">\(D\)</span>: Front door open</li>
+<li><span class="arithmatex">\(W\)</span>: Window open</li>
+</ul>
+<h4 id="problem-a-6-security-system-extended">Problem A-6: Security System (Extended)</h4>
+<blockquote>
+<p>When the security system is active, an alarm sounds if the front door or a window is open.
+Additional condition: even if the security system is off, the alarm always sounds if a window is broken.</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(A\)</span>: Security system active</li>
+<li><span class="arithmatex">\(D\)</span>: Front door open</li>
+<li><span class="arithmatex">\(W\)</span>: Window open</li>
+<li><span class="arithmatex">\(B\)</span>: Window broken</li>
+</ul>
+<h4 id="problem-a-7-night-light">Problem A-7: Night Light</h4>
+<blockquote>
+<p>When the night sensor is on, the light turns on if motion is detected or the manual switch is pressed.</p>
+</blockquote>
+<ul>
+<li><span class="arithmatex">\(N\)</span>: Night sensor on</li>
+<li><span class="arithmatex">\(M\)</span>: Motion detected</li>
+<li><span class="arithmatex">\(S\)</span>: Manual switch pressed</li>
+</ul>
+<h3 id="exercise-b-calculations">Exercise B. Calculations</h3>
+<h4 id="problem-b-1-odd-parity">Problem B-1: Odd Parity</h4>
+<p>The logical expression that outputs true when an odd number of the three variables <span class="arithmatex">\(p\)</span>, <span class="arithmatex">\(q\)</span>, <span class="arithmatex">\(r\)</span> are true is:</p>
+<div class="arithmatex">\[
+F = p \oplus q \oplus r
+\]</div>
+<ul>
+<li>(1) Verify with a truth table.</li>
+<li>(2) Build the logic circuit.</li>
+<li>(3) How would you modify the circuit so that it outputs true when an <em>even</em> number of inputs are true?</li>
+</ul>
+<h4 id="problem-b-2-equality-comparator">Problem B-2: Equality Comparator</h4>
+<p>The logical expressions for <span class="arithmatex">\(E = 1\)</span> when <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(q\)</span> have the same truth value, and <span class="arithmatex">\(D = 1\)</span> when they differ, are:</p>
+<div class="arithmatex">\[
+E = (\neg p \land \neg q) \lor (p \land q)
+\]</div>
+<div class="arithmatex">\[
+D = (\neg p \land q) \lor (p \land \neg q)
+\]</div>
+<ul>
+<li>(1) Verify both expressions with a truth table.</li>
+<li>(2) Build the logic circuits.</li>
+<li>(3) Which connective is <span class="arithmatex">\(D\)</span> equivalent to?</li>
+<li>(4) Confirm that <span class="arithmatex">\(E \equiv \neg D\)</span>.</li>
+</ul>
+<h4 id="problem-b-3-half-adder">Problem B-3: Half Adder</h4>
+<blockquote>
+<p>Find the logical expressions for the sum <span class="arithmatex">\(S\)</span> and carry <span class="arithmatex">\(C\)</span> when adding two single-bit binary numbers <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(q\)</span>.</p>
+</blockquote>
+<p>Consider binary addition: <span class="arithmatex">\(0+0=0\)</span>, <span class="arithmatex">\(0+1=1\)</span>, <span class="arithmatex">\(1+0=1\)</span>, <span class="arithmatex">\(1+1=10_2\)</span>. In the last case the result is two digits wide, which is why we represent the output with two variables <span class="arithmatex">\(S\)</span> (sum) and <span class="arithmatex">\(C\)</span> (carry).</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(p\)</span></th>
+<th><span class="arithmatex">\(q\)</span></th>
+<th><span class="arithmatex">\(C\)</span> (carry)</th>
+<th><span class="arithmatex">\(S\)</span> (sum)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>This demonstrates that arithmetic addition can be performed using only logical operations - the starting point for how computers compute.</p>
+<ul>
+<li>(1) Derive the logical expression for each of <span class="arithmatex">\(S\)</span> and <span class="arithmatex">\(C\)</span>.</li>
+<li>(2) Which connective does <span class="arithmatex">\(S\)</span> correspond to?</li>
+<li>(3) Which connective does <span class="arithmatex">\(C\)</span> correspond to?</li>
+</ul>
+<h4 id="problem-b-4-three-person-majority-vote">Problem B-4: Three-Person Majority Vote</h4>
+<blockquote>
+<p>Three people A, B, C vote yes (1) or no (0). A motion passes if at least two vote yes.</p>
+</blockquote>
+<p>The logical expression for the outcome is:</p>
+<div class="arithmatex">\[
+F = (A \land B) \lor (A \land C) \lor (B \land C)
+\]</div>
+<ul>
+<li>(1) Verify with a truth table.</li>
+<li>(2) Build the logic circuit.</li>
+</ul>
+<h4 id="problem-b-5-five-person-majority-vote">Problem B-5: Five-Person Majority Vote</h4>
+<blockquote>
+<p>Among five voters A, B, C, D, E, a motion passes if at least three vote yes.</p>
+</blockquote>
+<ul>
+<li>(1) The truth table has <span class="arithmatex">\(2^5 = 32\)</span> rows. How many rows have <span class="arithmatex">\(F = 1\)</span>?</li>
+<li>(2) Estimate how many terms the logical expression requires.</li>
+<li>(3) Consider how the complexity of the expression grows as the number of variables increases.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

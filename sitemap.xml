@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://llmsci.github.io/language-and-logic/</loc>
+         <lastmod>2026-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://llmsci.github.io/language-and-logic/bool/bool/</loc>
+         <lastmod>2026-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://llmsci.github.io/language-and-logic/logic-gates/logic-gate/</loc>
+         <lastmod>2026-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://llmsci.github.io/language-and-logic/logic-operators/logic-operators/</loc>
+         <lastmod>2026-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://llmsci.github.io/language-and-logic/rules/rules/</loc>
+         <lastmod>2026-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://llmsci.github.io/language-and-logic/sets/sets/</loc>
+         <lastmod>2026-04-27</lastmod>
+    </url>
+</urlset>
