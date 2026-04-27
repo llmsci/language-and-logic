@@ -42,3 +42,4 @@ nav:
   - Boolean Algebra: bool/bool.md
   - Logic Gates: logic-gates/logic-gate.md
   - Logical Operators: logic-operators/logic-operators.md
+  - Basic Rules for TFL: rules/rules.md
