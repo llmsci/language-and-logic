@@ -15,6 +15,7 @@ FOL
 
 - FOL Introduction: [fol-intro.md](fol/fol-intro.md) · [fol-intro.pdf](fol/fol-intro.pdf)
 - FOL Basic Concepts: [fol-23-concepts.md](fol/fol-23-concepts.md) · [fol-23-concepts.pdf](fol/fol-23-concepts.pdf)
+- FOL Single-Quantifier Symbolization: [fol-24-single-quantifier.md](fol/fol-24-single-quantifier.md) · [fol-24-single-quantifier.pdf](fol/fol-24-single-quantifier.pdf)
 
 ## References
 
