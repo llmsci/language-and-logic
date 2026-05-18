@@ -1,0 +1,1242 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Language and Logic">
+      
+      
+      
+        <link rel="canonical" href="https://llmsci.github.io/language-and-logic/fol/fol-24-single-quantifier/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>First-Order Logic: Single-Quantifier Symbolization - Language and Logic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#first-order-logic-single-quantifier-symbolization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Language and Logic" class="md-header__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Language and Logic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              First-Order Logic: Single-Quantifier Symbolization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Language and Logic" class="md-nav__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Language and Logic
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sets/sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bool/bool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic-gates/logic-gate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic-operators/logic-operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logical Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rules/rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Rules for TFL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fol-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FOL - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fol-23-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FOL - Basic Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cross-reference-forallx-yyc-part-5-ch-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Reference: forallx YYC (Part 5, Ch. 24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-quantifier-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Quantifier Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Quantifier Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1-every-f-is-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-1. "Every F is G"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-2-some-f-is-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-2. "Some F is G"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-3-no-f-is-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-3. "No F is G"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-4-only-fs-are-gs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-4. "Only Fs are Gs"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-5-pattern-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-5. Pattern Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-utility-of-paraphrase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Utility of Paraphrase
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Utility of Paraphrase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-1-removing-pronouns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-1. Removing Pronouns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2-handling-any-and-anyone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-2. Handling "Any" and "Anyone"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-quantifiers-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Quantifiers and Scope
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Quantifiers and Scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-1-parentheses-determine-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-1. Parentheses Determine Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-comparing-truth-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-2. Comparing Truth Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3-scope-and-connectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-3. Scope and Connectives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ambiguous-predicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ambiguous Predicates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Ambiguous Predicates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-1-a-predicate-defined-too-loosely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-1. A Predicate Defined Too Loosely
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-2-the-correct-symbolization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-2. The Correct Symbolization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-3-general-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-3. General Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="first-order-logic-single-quantifier-symbolization">First-Order Logic: Single-Quantifier Symbolization</h1>
+<h2 id="cross-reference-forallx-yyc-part-5-ch-24">Cross-Reference: forallx YYC (Part 5, Ch. 24)</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Quantifier Patterns</td>
+<td>24.1 Common quantifier phrases</td>
+</tr>
+<tr>
+<td>2. The Utility of Paraphrase</td>
+<td>24.4 The utility of paraphrase</td>
+</tr>
+<tr>
+<td>3. Quantifiers and Scope</td>
+<td>24.5 Quantifiers and scope</td>
+</tr>
+<tr>
+<td>4. Ambiguous Predicates</td>
+<td>24.6 Ambiguous predicates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-quantifier-patterns">1. Quantifier Patterns</h2>
+<p>Symbol key (used throughout this section):</p>
+<ul>
+<li><span class="arithmatex">\(D = \{a, b, c, d \}\)</span> : domain</li>
+<li><span class="arithmatex">\(a\)</span>: Alice, <span class="arithmatex">\(b\)</span>: Boole, <span class="arithmatex">\(c\)</span>: Cantor, <span class="arithmatex">\(d\)</span>: Dobby</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</li>
+</ul>
+<h3 id="1-1-every-f-is-g">1-1. "Every F is G"</h3>
+<p>Suppose we want to symbolize "All humans are mortal."</p>
+<div class="arithmatex">\[\forall x\; (H(x) \to M(x))\]</div>
+<p>We must use conditional(<span class="arithmatex">\(\to\)</span>) here, not conjunction(<span class="arithmatex">\(\land\)</span>). If we write:</p>
+<div class="arithmatex">\[\forall x\; (H(x) \land M(x))\]</div>
+<p>this means "everything is both human and mortal," which would require Dobby (<span class="arithmatex">\(d\)</span>) to be human as well. That is not the intended meaning.</p>
+<p>"Every <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>" is symbolized as <span class="arithmatex">\(\forall x\; (F(x) \to G(x))\)</span>.</p>
+<h3 id="1-2-some-f-is-g">1-2. "Some F is G"</h3>
+<p>"Some human is mortal" is:</p>
+<div class="arithmatex">\[\exists x\; (H(x) \land M(x))\]</div>
+<p>We must use conjunction(<span class="arithmatex">\(\land\)</span>) here, not conditional(<span class="arithmatex">\(\to\)</span>). If we write:</p>
+<div class="arithmatex">\[\exists x\; (H(x) \to M(x))\]</div>
+<p>this says there is some <span class="arithmatex">\(x\)</span> satisfying "<span class="arithmatex">\(H(x)\)</span> implies <span class="arithmatex">\(M(x)\)</span>." Since <span class="arithmatex">\(H(x) \to M(x)\)</span> is equivalent to <span class="arithmatex">\(\neg H(x) \lor M(x)\)</span>, it is true for any non-human object. In other words, the formula holds as long as there is something satisfying <span class="arithmatex">\(\neg H(x)\)</span>, so <span class="arithmatex">\(M(x)\)</span> is completely ignored. This is a much weaker claim than intended. Only when the domain consists exclusively of humans does the formula actually require some mortal to exist.</p>
+<p>"Some <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>" is symbolized as <span class="arithmatex">\(\exists x\; (F(x) \land G(x))\)</span>.</p>
+<p>Placing a conditional (<span class="arithmatex">\(\to\)</span>) inside the scope of an existential (<span class="arithmatex">\(\exists\)</span>) quantifier almost always produces a claim that is too weak.</p>
+<h3 id="1-3-no-f-is-g">1-3. "No F is G"</h3>
+<p>"No human is mortal":</p>
+<div class="arithmatex">\[\neg \exists x\; (H(x) \land M(x))\]</div>
+<p>This says that there is no object that is both human and mortal. The existence claim "some human is mortal" is denied.</p>
+<p>Or equivalently:</p>
+<div class="arithmatex">\[\forall x\; (H(x) \to \neg M(x))\]</div>
+<p>This says that for every <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human, then <span class="arithmatex">\(x\)</span> is not mortal. Every human is non-mortal.</p>
+<p>The two forms are equivalent by De Morgan's law for quantifiers:</p>
+<div class="arithmatex">\[\neg\exists x\,\varphi \equiv \forall x\,\neg\varphi\]</div>
+<p>De Morgan's law for connectives:</p>
+<div class="arithmatex">\[\neg(p \land q) \equiv \neg p \lor \neg q\]</div>
+<p>and the conditional equivalence:</p>
+<div class="arithmatex">\[p \to q \equiv \neg p \lor q\]</div>
+<p>"No <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>" is symbolized as <span class="arithmatex">\(\neg\exists x\;(F(x) \land G(x))\)</span> or <span class="arithmatex">\(\forall x\;(F(x) \to \neg G(x))\)</span>.</p>
+<h3 id="1-4-only-fs-are-gs">1-4. "Only Fs are Gs"</h3>
+<p>"Only humans are mortal" looks like <span class="arithmatex">\(\forall x(H(x) \to M(x))\)</span> at first glance, but the direction is reversed.</p>
+<p>Think about when "only humans are mortal" is false. It is false when something is mortal but not human. In that situation, "all humans are mortal" can still be true (every human is still mortal), but "only humans are mortal" is false (since a mortal non-human exists). The two sentences therefore have different truth conditions and require different FOL formulas.</p>
+<p>We can also paraphrase "only humans are mortal" as "no non-humans are mortal." That is, there does not exist something that is non-human and mortal.</p>
+<ul>
+<li><span class="arithmatex">\(\neg\exists x (\neg H(x) \land M(x))\)</span></li>
+<li><span class="arithmatex">\(\forall x \neg (\neg H(x) \land M(x))\)</span></li>
+<li><span class="arithmatex">\(\forall x (\neg\neg H(x) \lor \neg M(x))\)</span></li>
+<li><span class="arithmatex">\(\forall x (H(x) \lor \neg M(x))\)</span></li>
+<li><span class="arithmatex">\(\forall x (\neg M(x) \lor H(x))\)</span></li>
+<li><span class="arithmatex">\(\forall x (M(x) \to H(x))\)</span></li>
+</ul>
+<p>"Only <span class="arithmatex">\(F\)</span>s are <span class="arithmatex">\(G\)</span>s" means "if <span class="arithmatex">\(G\)</span>, then <span class="arithmatex">\(F\)</span>."</p>
+<h3 id="1-5-pattern-summary">1-5. Pattern Summary</h3>
+<table>
+<thead>
+<tr>
+<th>English pattern</th>
+<th>FOL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>.</td>
+<td><span class="arithmatex">\(\forall x\;(F(x) \to G(x))\)</span></td>
+</tr>
+<tr>
+<td>Some <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>.</td>
+<td><span class="arithmatex">\(\exists x\;(F(x) \land G(x))\)</span></td>
+</tr>
+<tr>
+<td>No <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>.</td>
+<td><span class="arithmatex">\(\neg\exists x\;(F(x) \land G(x))\)</span> or <span class="arithmatex">\(\forall x\;(F(x) \to \neg G(x))\)</span></td>
+</tr>
+<tr>
+<td>Only <span class="arithmatex">\(F\)</span>s are <span class="arithmatex">\(G\)</span>s.</td>
+<td><span class="arithmatex">\(\forall x\;(G(x) \to F(x))\)</span></td>
+</tr>
+<tr>
+<td>Not every <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(G\)</span>.</td>
+<td><span class="arithmatex">\(\neg\forall x\;(F(x) \to G(x))\)</span> or <span class="arithmatex">\(\exists x\;(F(x) \land \neg G(x))\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="exercise">Exercise</h3>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is a magician.</li>
+<li><span class="arithmatex">\(C(x)\)</span>: <span class="arithmatex">\(x\)</span> is inside the castle.</li>
+<li><span class="arithmatex">\(D(x)\)</span>: <span class="arithmatex">\(x\)</span> has a dragon.</li>
+<li><span class="arithmatex">\(K(x)\)</span>: <span class="arithmatex">\(x\)</span> is a knight.</li>
+<li><span class="arithmatex">\(T(x)\)</span>: <span class="arithmatex">\(x\)</span> is inside the town.</li>
+<li>
+<p><span class="arithmatex">\(S(x)\)</span>: <span class="arithmatex">\(x\)</span> carries a sword.</p>
+</li>
+<li>
+<p>Symbolize each sentence in FOL.</p>
+</li>
+<li>
+<p>(1) Every magician inside the castle has a dragon.</p>
+</li>
+<li>(2) Some knight in the town carries a sword.</li>
+<li>(3) Not all knights carrying a sword are inside the castle.</li>
+<li>(4) None of the magicians inside the castle carries a sword.</li>
+<li>(5) Only knights carry swords.</li>
+<li>
+<p>(6) No magician outside the castle has a dragon.</p>
+</li>
+<li>
+<p>Read each FOL formula in natural language.</p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\(\forall x\,(M(x) \to D(x))\)</span></p>
+</li>
+<li>(2) <span class="arithmatex">\(\exists x\,(K(x) \land \neg S(x))\)</span></li>
+<li>(3) <span class="arithmatex">\(\neg \exists x\,((M(x) \land C(x)) \land \neg D(x))\)</span></li>
+<li>
+<p>(4) <span class="arithmatex">\(\forall x\,(D(x) \to (M(x) \lor K(x)))\)</span></p>
+</li>
+<li>
+<p>Explain the difference in meaning between the two formulas and identify which is the correct symbolization of "every magician is in the castle."</p>
+</li>
+<li>
+<p>(a) <span class="arithmatex">\(\forall x\,(M(x) \land C(x))\)</span></p>
+</li>
+<li>(b) <span class="arithmatex">\(\forall x\,(M(x) \to C(x))\)</span></li>
+</ul>
+<hr />
+<h2 id="2-the-utility-of-paraphrase">2. The Utility of Paraphrase</h2>
+<p>When an English sentence is hard to symbolize directly in FOL, first paraphrase it, then symbolize the paraphrase. Each paraphrase takes one step closer to FOL.</p>
+<h3 id="2-1-removing-pronouns">2-1. Removing Pronouns</h3>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(a\)</span>: Alice</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</li>
+</ul>
+<p>Compare these two sentences.</p>
+<ol>
+<li>If Alice is human, then she is mortal.</li>
+<li>If a person is human, then she is mortal.</li>
+</ol>
+<p>Both have "she is mortal" in the consequent, but they mean different things. Paraphrase removes the pronouns.</p>
+<p>(1) → "If Alice is human, then Alice is mortal."
+$<span class="arithmatex">\(H(a) \to M(a)\)</span>$</p>
+<p>(2) → "For any person <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human, then <span class="arithmatex">\(x\)</span> is mortal."
+$<span class="arithmatex">\(\forall x\; (H(x) \to M(x))\)</span>$</p>
+<h3 id="2-2-handling-any-and-anyone">2-2. Handling "Any" and "Anyone"</h3>
+<p>"Any" and "anyone" can translate to <span class="arithmatex">\(\forall\)</span> or <span class="arithmatex">\(\exists\)</span> depending on context. Paraphrase resolves the ambiguity.</p>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(a\)</span>: Alice</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li>
+<p><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</p>
+</li>
+<li>
+<p>If anyone is human, then Alice is mortal.</p>
+</li>
+<li>If anyone is human, then they are mortal.</li>
+</ul>
+<p>(1) → "If there is at least one human, then Alice is mortal." The consequent makes a fixed claim about Alice that does not refer back to the antecedent. The existential governs the antecedent:</p>
+<div class="arithmatex">\[\exists x\; H(x) \to M(a)\]</div>
+<p>(2) → "For all <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human, then <span class="arithmatex">\(x\)</span> is mortal." The pronoun "they" in the consequent is bound to the same variable as "anyone":
+$<span class="arithmatex">\(\forall x\; (H(x) \to M(x))\)</span>$</p>
+<p>Key point: when "any" or "anyone" appears alone as the antecedent of a conditional, it usually translates to <span class="arithmatex">\(\exists\)</span>. When it appears as the subject of a conditional with the same pronoun bound in the consequent, it usually translates to <span class="arithmatex">\(\forall\)</span>. When unsure, confirm with a paraphrase.</p>
+<h3 id="exercise_1">Exercise</h3>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(k\)</span>: Kim</li>
+<li><span class="arithmatex">\(B(x)\)</span>: <span class="arithmatex">\(x\)</span> is a bassist.</li>
+<li><span class="arithmatex">\(R(x)\)</span>: <span class="arithmatex">\(x\)</span> is a rock star.</li>
+<li>
+<p><span class="arithmatex">\(L(x, y)\)</span>: <span class="arithmatex">\(x\)</span> loves <span class="arithmatex">\(y\)</span>.</p>
+</li>
+<li>
+<p>Symbolize each sentence in FOL. Use paraphrase to determine what the pronoun refers to and whether "anyone" is universal or existential.</p>
+</li>
+<li>
+<p>(1) If Kim is a bassist, then she is a rock star.</p>
+</li>
+<li>(2) If a person is a bassist, then she is a rock star.</li>
+<li>(3) If anyone is a bassist, then Kim is a rock star.</li>
+<li>
+<p>(4) If anyone is a bassist, then she is a rock star.</p>
+</li>
+<li>
+<p>Use paraphrase to explain the difference in meaning between the two sentences. Symbolize each in FOL.</p>
+</li>
+<li>
+<p>(a) Kim loves anyone.</p>
+</li>
+<li>
+<p>(b) Kim loves someone.</p>
+</li>
+<li>
+<p>Paraphrase each sentence, then symbolize it in FOL. Pay attention to the direction of quantification for "anyone."</p>
+</li>
+<li>
+<p>(1) If anyone loves Kim, then Kim is happy.</p>
+</li>
+<li>(2) Anyone who is a bassist is a rock star.</li>
+</ul>
+<hr />
+<h2 id="3-quantifiers-and-scope">3. Quantifiers and Scope</h2>
+<h3 id="3-1-parentheses-determine-scope">3-1. Parentheses Determine Scope</h3>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(a\)</span>: Alice</li>
+<li><span class="arithmatex">\(b\)</span>: Boole</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</li>
+</ul>
+<p>Compare these two sentences.</p>
+<ol>
+<li>If everyone is human, then Alice is mortal.</li>
+<li>Everyone is such that, if they are human, then Alice is mortal.</li>
+</ol>
+<p>In (1), the main connective is conditional(<span class="arithmatex">\(\to\)</span>) and the entire antecedent is "everyone is human."</p>
+<div class="arithmatex">\[\forall x\; H(x) \to M(a)\]</div>
+<p>Here <span class="arithmatex">\(\forall x\)</span> governs only <span class="arithmatex">\(H(x)\)</span>. <span class="arithmatex">\(M(a)\)</span> is outside its scope.</p>
+<p>In (2), <span class="arithmatex">\(\forall x\)</span> governs the entire conditional.</p>
+<div class="arithmatex">\[\forall x\; (H(x) \to M(a))\]</div>
+<h3 id="3-2-comparing-truth-values">3-2. Comparing Truth Values</h3>
+<ul>
+<li>Domain: <span class="arithmatex">\(\{a, b, c, d\}\)</span>. </li>
+<li>Extension of <span class="arithmatex">\(H\)</span>: <span class="arithmatex">\(\{a, b, c\}\)</span>. </li>
+<li><span class="arithmatex">\(M(a)\)</span>: true.</li>
+</ul>
+<p>Checking <span class="arithmatex">\(\forall x\; H(x) \to M(a)\)</span>:</p>
+<p><span class="arithmatex">\(\forall x\; H(x)\)</span> is false, since <span class="arithmatex">\(d\)</span> is not human. The antecedent is false, so the conditional is true. This sentence is trivially true in most interpretations.</p>
+<p>Checking <span class="arithmatex">\(\forall x\; (H(x) \to M(a))\)</span>:</p>
+<p>"For all <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human, then Alice is mortal." If <span class="arithmatex">\(M(a)\)</span> is true, the consequent is always true and the whole sentence is true. If <span class="arithmatex">\(M(a)\)</span> is false, the sentence is false whenever the domain contains a human. This sentence is contingent. </p>
+<p>A useful equivalence: when the quantified variable does not occur in the consequent, the scope makes a clean swap between <span class="arithmatex">\(\forall\)</span> and <span class="arithmatex">\(\exists\)</span>:</p>
+<div class="arithmatex">\[\forall x\,(H(x) \to M(a)) \;\equiv\; \exists x\, H(x) \to M(a)\]</div>
+<p>Both say "if there is a human, then Alice is mortal." This connects back to the "any/anyone" pattern in 2-2: "Alice is mortal, if anyone is human" is a natural English reading of either form.</p>
+<h3 id="3-3-scope-and-connectives">3-3. Scope and Connectives</h3>
+<p>Just as with negation(<span class="arithmatex">\(\neg\)</span>), the scope of <span class="arithmatex">\(\forall x\)</span> is marked explicitly by parentheses.</p>
+<table>
+<thead>
+<tr>
+<th>Formula</th>
+<th>Scope of <span class="arithmatex">\(\forall x\)</span></th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\forall x\; H(x) \to M(a)\)</span></td>
+<td><span class="arithmatex">\(H(x)\)</span></td>
+<td>"If everything is human, then Alice is mortal"</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\forall x\; (H(x) \to M(a))\)</span></td>
+<td><span class="arithmatex">\(H(x) \to M(a)\)</span></td>
+<td>"For all <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human, then Alice is mortal"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exercise_2">Exercise</h3>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(a\)</span>: Alice</li>
+<li><span class="arithmatex">\(b\)</span>: Boole</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li>
+<p><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</p>
+</li>
+<li>
+<p>Explain the difference between the two FOL formulas and give a natural language example of each.</p>
+</li>
+<li>
+<p>(a) <span class="arithmatex">\((\forall x\, H(x)) \to H(a)\)</span></p>
+</li>
+<li>
+<p>(b) <span class="arithmatex">\(\forall x\,(H(x) \to H(a))\)</span></p>
+</li>
+<li>
+<p>Explain the difference between the two FOL formulas and give a natural language example of each.</p>
+</li>
+<li>
+<p>(a) <span class="arithmatex">\(\neg H(a) \to H(b)\)</span></p>
+</li>
+<li>
+<p>(b) <span class="arithmatex">\(\neg(H(a) \to H(b))\)</span></p>
+</li>
+<li>
+<p>Let <span class="arithmatex">\(D = \{a, b, c, d\}\)</span>, ext(<span class="arithmatex">\(H\)</span>) <span class="arithmatex">\(= \{a, b\}\)</span>, ext(<span class="arithmatex">\(M\)</span>) <span class="arithmatex">\(= \{a\}\)</span>. Determine the truth value of each formula.</p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\((\forall x\, H(x)) \to M(a)\)</span></p>
+</li>
+<li>(2) <span class="arithmatex">\(\forall x\,(H(x) \to M(a))\)</span></li>
+<li>(3) <span class="arithmatex">\((\exists x\, H(x)) \to M(a)\)</span></li>
+<li>
+<p>(4) <span class="arithmatex">\(\forall x\,(H(x) \to M(x))\)</span></p>
+</li>
+<li>
+<p>Symbolize each sentence in FOL. Pay attention to the scope of quantifiers and negation.</p>
+</li>
+<li>
+<p>(1) If everything is mortal, then Alice is mortal.</p>
+</li>
+<li>(2) For all <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human, then Alice is mortal.</li>
+<li>(3) It is false that Alice is not mortal.</li>
+<li>(4) Alice is not mortal, or Boole is mortal.</li>
+</ul>
+<hr />
+<h2 id="4-ambiguous-predicates">4. Ambiguous Predicates</h2>
+<p>Defining predicates carelessly can make an invalid argument appear valid.</p>
+<h3 id="4-1-a-predicate-defined-too-loosely">4-1. A Predicate Defined Too Loosely</h3>
+<p>Consider this argument.</p>
+<blockquote>
+<p>Alice is a famous logician and a human.<br />
+Therefore, Alice is a famous human.</p>
+</blockquote>
+<p>This argument is invalid. "Famous" in "famous logician" and "famous human" carries different contextual meanings.</p>
+<p>Now suppose we set up this symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(F(x)\)</span>: <span class="arithmatex">\(x\)</span> is famous.</li>
+<li><span class="arithmatex">\(L(x)\)</span>: <span class="arithmatex">\(x\)</span> is a logician.</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+</ul>
+<p>The argument is symbolized as:</p>
+<div class="arithmatex">\[\underbrace{(F(a) \land L(a)) \land H(a)}_{\text{premise}} \;\therefore\; \underbrace{H(a) \land F(a)}_{\text{conclusion}}\]</div>
+<p>This symbolization is valid. An invalid argument has been made to look valid. The predicate failed to capture the difference between "famous as a logician" and "famous as a human."</p>
+<h3 id="4-2-the-correct-symbolization">4-2. The Correct Symbolization</h3>
+<p>"Famous" requires different predicates depending on the context in which someone is famous.</p>
+<ul>
+<li><span class="arithmatex">\(F_1(x)\)</span>: <span class="arithmatex">\(x\)</span> is famous as a logician.</li>
+<li><span class="arithmatex">\(F_2(x)\)</span>: <span class="arithmatex">\(x\)</span> is famous as a human.</li>
+</ul>
+<p>Now the argument becomes:</p>
+<div class="arithmatex">\[\underbrace{(F_1(a) \land L(a)) \land H(a)}_{\text{premise}} \;\therefore\; \underbrace{H(a) \land F_2(a)}_{\text{conclusion}}\]</div>
+<p>This symbolization is invalid — correctly reflecting the invalidity of the original argument.</p>
+<h3 id="4-3-general-principle">4-3. General Principle</h3>
+<p>Adjectives such as "famous," "skilled," "good," "big," and "small" shift in meaning with context.</p>
+<ul>
+<li>"Big" in "big dog" and "big problem" applies different standards.</li>
+<li>"Good" in "good surgeon" and "good person" applies different standards.</li>
+</ul>
+<p>We do not always need to split them into separate predicates. If only one sense appears in the argument, a single predicate suffices. But when two different senses appear at once, we must separate them.</p>
+<p>Key principle: before symbolizing an argument, check whether the same English word is used in different senses within that argument.</p>
+<h3 id="exercise_3">Exercise</h3>
+<ol>
+<li>
+<p>The following symbol key is used to symbolize sentence (1).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(a\)</span>: Alice</p>
+</li>
+<li><span class="arithmatex">\(K(x)\)</span>: <span class="arithmatex">\(x\)</span> is skilled.</li>
+<li>
+<p><span class="arithmatex">\(S(x)\)</span>: <span class="arithmatex">\(x\)</span> is a surgeon.</p>
+</li>
+<li>
+<p>(1) Alice is a skilled surgeon. → <span class="arithmatex">\(K(a) \land S(a)\)</span></p>
+</li>
+</ol>
+<p>Explain the problem with this symbolization. Give two more English examples with the same type of problem.</p>
+<ol>
+<li>Explain in natural language why the following argument is invalid. Reconstruct the symbol key to make the invalidity visible, then symbolize the argument.</li>
+</ol>
+<blockquote>
+<p>Bob is a good liar.<br />
+Bob is a person.<br />
+Therefore, Bob is a good person.</p>
+</blockquote>
+<ol>
+<li>
+<p>For each case, determine whether treating "skilled" as a single predicate <span class="arithmatex">\(K(x)\)</span> is acceptable or whether it must be split. Explain your answer.</p>
+</li>
+<li>
+<p>(1) Alice is a skilled surgeon. Therefore, Alice is skilled.</p>
+</li>
+<li>(2) Alice is a skilled surgeon. Bob is a skilled painter. Therefore, Alice and Bob have a skill in common.</li>
+<li>(3) Every skilled surgeon is skilled. Therefore, some surgeon is skilled.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

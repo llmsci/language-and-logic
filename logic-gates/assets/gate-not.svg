@@ -1,0 +1,36 @@
+<svg width="400" height="140" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+    .gate { stroke: #1e293b; stroke-width: 2.5; fill: #f8fafc; stroke-linejoin: round; }
+    .lbl  { font-family: -apple-system, system-ui, sans-serif; font-size: 15px; fill: #1e293b; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    .sub  { font-family: -apple-system, system-ui, sans-serif; font-size: 11px; fill: #64748b; text-anchor: middle; }
+    .glbl { font-family: -apple-system, system-ui, sans-serif; font-size: 12px; fill: #475569; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+
+  <!-- Background -->
+  <rect width="400" height="140" fill="white" rx="10" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Input wire -->
+  <line x1="65" y1="70" x2="145" y2="70" class="wire"/>
+
+  <!-- NOT gate body: triangle -->
+  <polygon points="145,30 230,70 145,110" class="gate"/>
+
+  <!-- Bubble (inversion circle) -->
+  <circle cx="239" cy="70" r="9" class="gate"/>
+
+  <!-- Gate label -->
+  <text x="175" y="70" class="glbl">NOT</text>
+
+  <!-- Output wire -->
+  <line x1="248" y1="70" x2="320" y2="70" class="wire"/>
+
+  <!-- Input label -->
+  <text x="45" y="70" class="lbl">A</text>
+
+  <!-- Output label -->
+  <text x="348" y="70" class="lbl">F</text>
+
+  <!-- Annotation -->
+  <text x="284" y="95" class="sub">F = ¬A</text>
+</svg>

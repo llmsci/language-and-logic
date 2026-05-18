@@ -1,0 +1,1092 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Language and Logic">
+      
+      
+      
+        <link rel="canonical" href="https://llmsci.github.io/language-and-logic/fol/fol-intro/">
+      
+      
+        <link rel="prev" href="../../rules/rules/">
+      
+      
+        <link rel="next" href="../fol-23-concepts/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>FOL - Introduction - Language and Logic</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#predicate-logic-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Language and Logic" class="md-header__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Language and Logic
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FOL - Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Language and Logic" class="md-nav__button md-logo" aria-label="Language and Logic" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Language and Logic
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/llmsci/language-and-logic" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sets/sets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bool/bool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boolean Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic-gates/logic-gate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic-operators/logic-operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logical Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rules/rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Rules for TFL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FOL - Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FOL - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-boole-1847-algebraization-of-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Boole (1847): Algebraization of Logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Boole (1847): Algebraization of Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-frege-1879-function-argument-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Frege (1879): Function-Argument Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Frege (1879): Function-Argument Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-peirce-1885-quantifiers-and-order-distinctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Peirce (1885): Quantifiers and Order Distinctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Peirce (1885): Quantifiers and Order Distinctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-interpretations-and-domains-tarski-1930s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Interpretations and Domains: Tarski (1930s)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Interpretations and Domains: Tarski (1930s)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fol-23-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FOL - Basic Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-boole-1847-algebraization-of-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Boole (1847): Algebraization of Logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Boole (1847): Algebraization of Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-frege-1879-function-argument-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Frege (1879): Function-Argument Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Frege (1879): Function-Argument Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-peirce-1885-quantifiers-and-order-distinctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Peirce (1885): Quantifiers and Order Distinctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Peirce (1885): Quantifiers and Order Distinctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-interpretations-and-domains-tarski-1930s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Interpretations and Domains: Tarski (1930s)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Interpretations and Domains: Tarski (1930s)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="predicate-logic-introduction">Predicate Logic: Introduction</h1>
+<p>Several logicians from the mid-19th to the early 20th century developed first-order logic independently, with little awareness of each other's work.</p>
+<h2 id="1-boole-1847-algebraization-of-logic">1. Boole (1847): Algebraization of Logic</h2>
+<p>Many trace modern logic to George Boole (1815–1864, British) and his <em>Mathematical Analysis of Logic</em> (1847). Boole was a self-taught mathematician and logician who taught at Queen's College Cork in Ireland. He showed that logic can be expressed as an algebraic system. His name lives on in Boolean algebra, which forms the foundation of modern computer science.</p>
+<p>Boole showed that Aristotle's syllogisms could be expressed as algebra. His system is what we now call propositional logic (sentential logic), a limited form of first-order logic. However, it had no quantifiers and no way to express relations.</p>
+<h3 id="exercise">Exercise</h3>
+<p>Do not analyze the internal structure of each sentence. First define your symbol key, then symbolize each sentence in propositional logic.</p>
+<ul>
+<li>(1) Alice is human, and Boole is a mathematician.</li>
+<li>(2) Alice is not human, and Dobby is a wizard.</li>
+<li>(3) Alice is human or Dobby is a wizard.</li>
+<li>(4) If Alice is human, then Alice dies.</li>
+<li>(5) Alice dies if and only if Alice is human.</li>
+<li>(6) Alice is human and Boole is a mathematician, or Dobby is a wizard.</li>
+<li>(7) If Alice is human she dies, and if she is not human she is immortal.</li>
+</ul>
+<h2 id="2-frege-1879-function-argument-analysis">2. Frege (1879): Function-Argument Analysis</h2>
+<p>Frege (Gottlob Frege, 1848–1925, German) built the first predicate logic system in 1879, in his <em>Begriffsschrift</em> (<em>Concept Notation</em>). He was a mathematician, logician, and philosopher who spent his career at the University of Jena, working to derive the foundations of mathematics from pure logic. Few noticed the <em>Begriffsschrift</em> at first, but Russell and Wittgenstein later rediscovered it. It is now the starting point of modern mathematical logic and analytic philosophy.</p>
+<p>Frege's key idea was to bring the mathematical concept of a function into logic. Just as <span class="arithmatex">\(f(x) = x^2\)</span> takes an argument <span class="arithmatex">\(x\)</span> and returns a number, a predicate takes arguments and returns true or false.</p>
+<p>Analyzing "Alice is human":</p>
+<div class="arithmatex">\[H(a)\]</div>
+<p>Here <span class="arithmatex">\(H(\cdot)\)</span> is an <em>unsaturated</em> function with an open slot <span class="arithmatex">\((\cdot)\)</span>. With the slot empty, <span class="arithmatex">\(H(\cdot)\)</span> has no truth value. Only when a term like <span class="arithmatex">\(a\)</span> (Alice) fills the slot does it become the <em>saturated</em> expression <span class="arithmatex">\(H(a)\)</span>, which is either true or false.</p>
+<p>The same holds for binary predicates. <span class="arithmatex">\(L(\cdot,\cdot)\)</span> has two open slots. It has a truth value only when both are filled, as in <span class="arithmatex">\(L(a, b)\)</span> ("Alice likes Boole").</p>
+<ul>
+<li><span class="arithmatex">\(H(\cdot)\)</span> : unsaturated, incomplete, no truth value</li>
+<li><span class="arithmatex">\(a\)</span> : saturated, complete, referes to an object</li>
+</ul>
+<p>This distinction between unsaturated and saturated expressions is the basis for today's distinction between predicates and terms.</p>
+<p>Although Frege did not use the symbols <span class="arithmatex">\(\forall\)</span> and <span class="arithmatex">\(\exists\)</span> as we know them today, he introduced a way to express universal quantification, enabling formulas like <span class="arithmatex">\(\forall x(H(x) \to M(x))\)</span> in modern notation. He expressed existential statements using universal quantification and negation, not a separate existential quantifier. His system first combined relational logic with quantification.</p>
+<h3 id="exercise_1">Exercise</h3>
+<p>Analyze each sentence using function-argument structure.</p>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(a\)</span>: Alice, <span class="arithmatex">\(b\)</span>: Boole, <span class="arithmatex">\(c\)</span>: Cantor</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</li>
+<li>
+<p><span class="arithmatex">\(L(x, y)\)</span>: <span class="arithmatex">\(x\)</span> likes <span class="arithmatex">\(y\)</span>.</p>
+</li>
+<li>
+<p>Identify the predicate and arguments and represent each sentence in FOL.</p>
+</li>
+<li>
+<p>(1) Alice is mortal.</p>
+</li>
+<li>(2) Boole is human.</li>
+<li>(3) Alice loves Boole.</li>
+<li>
+<p>(4) Boole loves Alice.</p>
+</li>
+<li>
+<p>In "Boole is human," identify the unsaturated and saturated expressions.</p>
+</li>
+<li>
+<p>Remove the names from each expression below to leave only the predicate part.</p>
+</li>
+<li>
+<p>(1) Alice is human.</p>
+</li>
+<li>(2) Alice loves Boole.</li>
+<li>
+<p>(3) Cantor gives Dobby to Alice.</p>
+</li>
+<li>
+<p>Write out the natural language sentence each FOL formula represents. </p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\(H(a)\)</span></p>
+</li>
+<li>(2) <span class="arithmatex">\(M(b)\)</span></li>
+<li>(3) <span class="arithmatex">\(L(a, b)\)</span></li>
+<li>(4) <span class="arithmatex">\(L(b, a)\)</span></li>
+</ul>
+<h2 id="3-peirce-1885-quantifiers-and-order-distinctions">3. Peirce (1885): Quantifiers and Order Distinctions</h2>
+<p>Peirce (Charles Sanders Peirce, 1839–1914, American) worked in the tradition of Boole and made important contributions, independent of Frege, in his 1885 paper "On the Algebra of Logic." He studied mathematics at Harvard and worked at the U.S. Coast Survey. He also founded semiotics and pragmatism. He spent his later years in poverty outside academia, but his influence on logic and philosophy was widely recognized after his death.</p>
+<p>First, he introduced quantifier symbols, using <span class="arithmatex">\(\Pi\)</span> for the universal quantifier and <span class="arithmatex">\(\Sigma\)</span> for the existential, treating them as infinite Boolean products and sums. For example, <span class="arithmatex">\(\Pi_x H(x)\)</span> means "<span class="arithmatex">\(H(a)\)</span> and <span class="arithmatex">\(H(b)\)</span> and <span class="arithmatex">\(H(c)\)</span> and …"</p>
+<p>Second, he drew the order distinction. He divided his paper into "first-intentional logic," where quantifiers range over individual objects, and "second-intentional logic," where quantifiers can range over predicates. This is the origin of today's distinction between first-order and second-order logic.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Quantified over</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0th order</td>
+<td>nothing (propositions only)</td>
+<td>Propositional logic</td>
+</tr>
+<tr>
+<td>1st order</td>
+<td>individual objects</td>
+<td>Predicate logic, FOL</td>
+</tr>
+<tr>
+<td>2nd order</td>
+<td>properties and relations themselves</td>
+<td>Second-order logic</td>
+</tr>
+</tbody>
+</table>
+<p>Modern notation uses <span class="arithmatex">\(\forall\)</span> and <span class="arithmatex">\(\exists\)</span> instead of Peirce's <span class="arithmatex">\(\Pi\)</span> and <span class="arithmatex">\(\Sigma\)</span>.</p>
+<ul>
+<li><span class="arithmatex">\(\forall x H(x)\)</span>: "For all <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(x\)</span> is human"</li>
+<li><span class="arithmatex">\(\exists x H(x)\)</span>: "There exists some <span class="arithmatex">\(x\)</span> such that <span class="arithmatex">\(x\)</span> is human"</li>
+</ul>
+<p>For example,</p>
+<div class="arithmatex">\[\forall x(H(x) \to M(x))\]</div>
+<p>means "For all <span class="arithmatex">\(x\)</span>, if <span class="arithmatex">\(x\)</span> is human then <span class="arithmatex">\(x\)</span> is mortal" — i.e., "All humans are mortal." By contrast,</p>
+<div class="arithmatex">\[\exists x(H(x) \land M(x))\]</div>
+<p>means "There exists some <span class="arithmatex">\(x\)</span> such that <span class="arithmatex">\(x\)</span> is human and mortal."</p>
+<p>The key point: <span class="arithmatex">\(\forall\)</span> ranges over the domain, while <span class="arithmatex">\(\exists\)</span> asserts that at least one object satisfies the condition.</p>
+<p>In second-order logic, we can quantify over properties and relations, not just individual objects. For instance:</p>
+<blockquote>
+<p>"Every property that Alice has, Boole also has."</p>
+</blockquote>
+<p>This requires a property variable <span class="arithmatex">\(P\)</span>:</p>
+<div class="arithmatex">\[\forall P(P(a) \to P(b))\]</div>
+<p>"For all properties <span class="arithmatex">\(P\)</span>, if Alice (<span class="arithmatex">\(a\)</span>) has <span class="arithmatex">\(P\)</span>, then Boole (<span class="arithmatex">\(b\)</span>) has <span class="arithmatex">\(P\)</span>."</p>
+<p>In summary: <span class="arithmatex">\(\forall x\)</span>, <span class="arithmatex">\(\exists x\)</span> talk about individual objects; <span class="arithmatex">\(\forall P\)</span>, <span class="arithmatex">\(\exists P\)</span> talk about properties. First-order logic covers only the former; second-order logic covers both.</p>
+<h3 id="exercise_2">Exercise</h3>
+<p>Answer each question about quantifiers and order distinctions.</p>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(a\)</span>: Alice, <span class="arithmatex">\(b\)</span>: Boole, <span class="arithmatex">\(c\)</span>: Cantor</li>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li>
+<p><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</p>
+</li>
+<li>
+<p>Read each formula in natural language.</p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\(\forall x H(x)\)</span></p>
+</li>
+<li>(2) <span class="arithmatex">\(\exists x H(x)\)</span></li>
+<li>(3) <span class="arithmatex">\(\forall x(H(x) \to M(x))\)</span></li>
+<li>
+<p>(4) <span class="arithmatex">\(\exists x(H(x) \land M(x))\)</span></p>
+</li>
+<li>
+<p>Symbolize each sentence in FOL.</p>
+</li>
+<li>
+<p>(1) All humans are mortal.</p>
+</li>
+<li>(2) There is at least one thing that is human.</li>
+<li>(3) There is at least one human who is not mortal.</li>
+<li>
+<p>(4) Nothing is human.</p>
+</li>
+<li>
+<p>Represent each sentence in FOL if possible; otherwise, explain why it cannot be expressed in FOL.</p>
+</li>
+<li>
+<p>(1) All humans are mortal.</p>
+</li>
+<li>(2) Some human is a student.</li>
+<li>(3) Alice and Boole share every property.</li>
+</ul>
+<h2 id="4-interpretations-and-domains-tarski-1930s">4. Interpretations and Domains: Tarski (1930s)</h2>
+<p>While Frege and Peirce developed the syntax of logic, Alfred Tarski (1901–1983, Polish-American) gave it a rigorous definition of truth in the 1930s. Tarski studied mathematics at the University of Warsaw and later taught at UC Berkeley. He is considered one of the greatest logicians of the 20th century, known for his formal definition of truth, model theory, and work on decidability.</p>
+<p>Tarski established the concepts of domain and interpretation.
+A formula is not true or false on its own. Its truth value depends on an interpretation.
+An interpretation specifies:</p>
+<ol>
+<li>A domain <span class="arithmatex">\(D\)</span>: the set of individual objects over which variables range</li>
+<li>What object each constant refers to</li>
+<li>What set of objects (extension) each predicate denotes</li>
+</ol>
+<p>Example — same formula, different interpretations:</p>
+<p>Formula: <span class="arithmatex">\(\forall x(H(x) \to M(x))\)</span></p>
+<table>
+<thead>
+<tr>
+<th>Interpretation</th>
+<th><span class="arithmatex">\(D\)</span></th>
+<th>Extension of <span class="arithmatex">\(H\)</span></th>
+<th>Extension of <span class="arithmatex">\(M\)</span></th>
+<th>True/False</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal{M}_1\)</span></td>
+<td><span class="arithmatex">\(\{a, b, c, d\}\)</span></td>
+<td><span class="arithmatex">\(\{a, b, c\}\)</span></td>
+<td><span class="arithmatex">\(\{a, b, c, d\}\)</span></td>
+<td>True (all humans are mortal)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal{M}_2\)</span></td>
+<td><span class="arithmatex">\(\{a, b, c, d\}\)</span></td>
+<td><span class="arithmatex">\(\{a, b, c\}\)</span></td>
+<td><span class="arithmatex">\(\{a, b\}\)</span></td>
+<td>False (<span class="arithmatex">\(c\)</span> is human but not mortal)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal{M}_3\)</span></td>
+<td><span class="arithmatex">\(\{d\}\)</span></td>
+<td><span class="arithmatex">\(\emptyset\)</span></td>
+<td><span class="arithmatex">\(\{d\}\)</span></td>
+<td>True (vacuously — the extension of <span class="arithmatex">\(H\)</span> is empty)</td>
+</tr>
+</tbody>
+</table>
+<p>The formula is the same, but its truth value changes with the interpretation. This is the starting point of model theory.</p>
+<h3 id="exercise_3">Exercise</h3>
+<p>Answer each question about interpretations and domains.</p>
+<p>Symbol key:</p>
+<ul>
+<li><span class="arithmatex">\(H(x)\)</span>: <span class="arithmatex">\(x\)</span> is human.</li>
+<li><span class="arithmatex">\(M(x)\)</span>: <span class="arithmatex">\(x\)</span> is mortal.</li>
+<li>
+<p><span class="arithmatex">\(L(x, y)\)</span>: <span class="arithmatex">\(x\)</span> likes <span class="arithmatex">\(y\)</span>.</p>
+</li>
+<li>
+<p>Determine whether <span class="arithmatex">\(\forall x (H(x) \to M(x))\)</span> is true or false under each interpretation.</p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(H\)</span>) = <span class="arithmatex">\(\{a\}\)</span>, ext(<span class="arithmatex">\(M\)</span>) = <span class="arithmatex">\(\{a, b\}\)</span></p>
+</li>
+<li>(2) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(H\)</span>) = <span class="arithmatex">\(\{a, b\}\)</span>, ext(<span class="arithmatex">\(M\)</span>) = <span class="arithmatex">\(\{a\}\)</span></li>
+<li>
+<p>(3) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(H\)</span>) = <span class="arithmatex">\(\emptyset\)</span>, ext(<span class="arithmatex">\(M\)</span>) = <span class="arithmatex">\(\{a\}\)</span></p>
+</li>
+<li>
+<p>Determine whether <span class="arithmatex">\(\exists x (H(x) \land M(x))\)</span> is true or false under each interpretation.</p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(H\)</span>) = <span class="arithmatex">\(\{a, c\}\)</span>, ext(<span class="arithmatex">\(M\)</span>) = <span class="arithmatex">\(\{b, c\}\)</span></p>
+</li>
+<li>
+<p>(2) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(H\)</span>) = <span class="arithmatex">\(\{a\}\)</span>, ext(<span class="arithmatex">\(M\)</span>) = <span class="arithmatex">\(\{b, c\}\)</span></p>
+</li>
+<li>
+<p>Determine whether <span class="arithmatex">\(\forall x L(x, a)\)</span> is true or false under each interpretation.</p>
+</li>
+<li>
+<p>(1) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(L\)</span>) = <span class="arithmatex">\(\{(a,a), (b,a), (c,a)\}\)</span></p>
+</li>
+<li>(2) <span class="arithmatex">\(W = \{a, b, c\}\)</span>, ext(<span class="arithmatex">\(L\)</span>) = <span class="arithmatex">\(\{(a,a), (b,a)\}\)</span></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.sections"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
